@@ -1,14 +1,14 @@
 import React from 'react';
 
-function Strona1() {
+function Page1() {
     return(
       <div>
-        <h1>Siema Świecie!</h1>
+        <h1>Page 1</h1>
       </div>
     )
   }
   
-  function Strona2() {
+  function Page2() {
     return(
       <div>
       <h1>Customer care view</h1>
@@ -19,7 +19,7 @@ function Strona1() {
     )
   }
   
-  function Strona3() {
+  function Page3() {
     return(
       <div>
         <h1>Create new integration poiny</h1>
@@ -35,15 +35,15 @@ function Strona1() {
     )
   }
   
-  function Strona4() {
+  function Page4() {
     return(
       <div>
-        <h1>LISt integrations</h1>
+        <h1>LIST integrations</h1>
       </div>
     )
   }
   
-  function Strona5() {
+  function Page5() {
     return(
       <div>
         <h1>Configure integration for project X</h1>
@@ -70,27 +70,27 @@ function Strona1() {
     )
   }
   
-  class WyswietlStrone extends React.Component {
+  class DisplayPage extends React.Component {
     state = {
-      id_strony: 1
+      page_id: 1
     }
     render() {
       return(
         <div className='App'>
-          <button type="button" onClick={() => this.setState({ id_strony: 1 })}>Click Me!</button>
-          <button type="button" onClick={() => this.setState({ id_strony: 2 })}>Click Me!</button>
-          <button type="button" onClick={() => this.setState({ id_strony: 3 })}>Click Me!</button>
-          <button type="button" onClick={() => this.setState({ id_strony: 4 })}>Click Me!</button>
-          <button type="button" onClick={() => this.setState({ id_strony: 5 })}>Click Me!</button>
+          <button type="button" onClick={() => this.setState({ page_id: 1 })}>Click Me!</button>
+          <button type="button" onClick={() => this.setState({ page_id: 2 })}>Click Me!</button>
+          <button type="button" onClick={() => this.setState({ page_id: 3 })}>Click Me!</button>
+          <button type="button" onClick={() => this.setState({ page_id: 4 })}>Click Me!</button>
+          <button type="button" onClick={() => this.setState({ page_id: 5 })}>Click Me!</button>
           
-          {this.state.id_strony == 1 ? <Strona1 /> : null}
-          {this.state.id_strony == 2 ? <Strona2 /> : null}
-          {this.state.id_strony == 3 ? <Strona3 /> : null}
-          {this.state.id_strony == 4 ? <Strona4 /> : null}
-          {this.state.id_strony == 5 ? <Strona5 /> : null}
+          {this.state.page_id == 1 ? <Page1 /> : null}
+          {this.state.page_id == 2 ? <Page2 /> : null}
+          {this.state.page_id == 3 ? <Page3 /> : null}
+          {this.state.page_id == 4 ? <Page4 /> : null}
+          {this.state.page_id == 5 ? <Page5 /> : null}
         </div>
       )
     }
   }
   
-  export default WyswietlStrone;
+  export default DisplayPage;
