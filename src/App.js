@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Authenticator, useTheme, Heading, Text } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import WyswietlStrone from './WyswietlStrone';
+import DisplayPage from './DisplayPage';
 
 const formFields = {
   confirmVerifyUser: {
@@ -60,7 +60,7 @@ export default function App() {
       {({ signOut, user }) => (
         <main>
           <p>Hello {user.attributes.name}<button onClick={signOut}>Sign out</button></p>
-          <WyswietlStrone />
+          <DisplayPage />
         </main>
       )}
     </Authenticator>
