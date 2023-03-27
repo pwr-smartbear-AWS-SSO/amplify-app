@@ -3,8 +3,10 @@ import './App.css';
 import { Authenticator, useTheme, Heading, Text } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import DisplayPage from './DisplayPage';
-
-const formFields = {
+import {
+  Logowanie 
+ } from './ui-components';
+/*const formFields = {
   confirmVerifyUser: {
     confirmation_code: {
       label: 'New Label',
@@ -49,13 +51,14 @@ const components = {
     },
   },
 };
-
+*/
 export default function App() {
   return (
-    <Authenticator
-      formFields={formFields}
+    <Logowanie
+    onSubmit={fields => { /* Handle form submission */}}
+     /* formFields={formFields}
       components={components}
-      hideSignUp={true}
+      hideSignUp={true} */
     >
       {({ signOut, user }) => (
         <main>
@@ -63,6 +66,6 @@ export default function App() {
           <DisplayPage />
         </main>
       )}
-    </Authenticator>
+    </Logowanie>
   );
 }
