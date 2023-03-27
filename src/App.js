@@ -1,25 +1,68 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { Authenticator, useTheme, Heading, Text } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import WyswietlStrone from './WyswietlStrone';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello world
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+const formFields = {
+  confirmVerifyUser: {
+    confirmation_code: {
+      label: 'New Label',
+      placeholder: 'Enter your Confirmation Code:',
+      isRequired: false,
+    },
+  },
+};
+
+const components = {
+  VerifyUser: {
+    Header() {
+      const { tokens } = useTheme();
+      return (
+        <Heading
+          padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
+          level={3}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Enter Information:
+        </Heading>
+      );
+    },
+    Footer() {
+      return <Text>Footer Information</Text>;
+    },
+  },
+
+  ConfirmVerifyUser: {
+    Header() {
+      const { tokens } = useTheme();
+      return (
+        <Heading
+          padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
+          level={3}
+        >
+          Enter Information:
+        </Heading>
+      );
+    },
+    Footer() {
+      return <Text>Footer Information</Text>;
+    },
+  },
+};
+
+export default function App() {
+  return (
+    <Authenticator
+      formFields={formFields}
+      components={components}
+      hideSignUp={true}
+    >
+      {({ signOut, user }) => (
+        <main>
+          <p>Hello {user.attributes.name}<button onClick={signOut}>Sign out</button></p>
+          <WyswietlStrone />
+        </main>
+      )}
+    </Authenticator>
   );
 }
-
-export default App;
