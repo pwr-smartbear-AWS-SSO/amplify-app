@@ -56,7 +56,7 @@ export default function App() {
     
       formFields={formFields}
       components={components}
-      hideSignUp={true} */
+      hideSignUp={true}
     >
       {({ signOut, user }) => (
         <main>
