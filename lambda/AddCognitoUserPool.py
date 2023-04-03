@@ -6,7 +6,7 @@ def lambda_handler(event, context):
    # Set the Cognito User Pool settings
     user_pool_name = event['key1']
     policies = {
-        "PasswordPolicy": {
+   "PasswordPolicy": {
             "MinimumLength": 6,
             "RequireLowercase": False,
             "RequireNumbers": False,
@@ -27,8 +27,6 @@ def lambda_handler(event, context):
    # Convert datetime objects to strings
     response = json.loads(json.dumps(response, default=str))
 
-    # Print information about the new Cognito User Pool
-    print("Created user pool with ID:", response["UserPool"]["Id"])
-    print("User pool name:", response["UserPool"]["Name"])
 
-    return response
+
+    return response["UserPool"]["Id"]
