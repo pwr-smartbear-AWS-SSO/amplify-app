@@ -4,14 +4,14 @@ import json
 
 def lambda_handler(event, context):
    # Set the Cognito User Pool settings
-    user_pool_name = "MyUserPool"
+    user_pool_name = event['key1']
     policies = {
         "PasswordPolicy": {
-            "MinimumLength": 8,
-            "RequireLowercase": True,
-            "RequireNumbers": True,
-            "RequireSymbols": True,
-            "RequireUppercase": True
+            "MinimumLength": 6,
+            "RequireLowercase": False,
+            "RequireNumbers": False,
+            "RequireSymbols": False,
+            "RequireUppercase": False
         }
     }
     username_attributes = ["email"]
