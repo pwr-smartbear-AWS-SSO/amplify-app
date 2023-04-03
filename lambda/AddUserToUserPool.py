@@ -2,7 +2,6 @@ import boto3
 import json
 
 def lambda_handler(event, context):
-    # Set the Cognito User Pool settings
     user_pool_ID = event['key1'] #getting user pool id
     user_name = event['key2'] #the user name is the email
 
