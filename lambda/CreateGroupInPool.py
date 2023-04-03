@@ -15,4 +15,12 @@ def lambda_handler(event, context):
         #RoleArn='arn:aws:iam::762785132751:policy/testTech', #might be implemented by the enet key in the future
         Precedence=precedence
     )
-    return group_name
+    group_name = response['Group']['GroupName']
+    group_response = client.get_group(
+        GroupName=group_name,
+        UserPoolId=user_pool_id
+    )
+    
+    role_arn = group_response['Group']['RoleArn']
+    return role_arn
+
