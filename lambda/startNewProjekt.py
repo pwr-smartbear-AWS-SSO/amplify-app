@@ -1,24 +1,25 @@
 import boto3
 import json
 
+# key 1 = name of Cognito Pool
+# key 2 = admin adres for new Pools 
+
 def lambda_handler(event, context):
+    lambda_client = boto3.client('lambda')
+    poolID = runLambda('arn:aws:lambda:eu-central-1:762785132751:function:AddCognitoUserPoolGit',"RequestResponse", event['key1'])
+    # runLambda(AddUserToUserPool,"RequestResponse", user_pool_ID, event['kay2']) #key2 is admni mail
+    return poolID
 
-    idPool = AddCognitoUserPoolGit()
-    add(idPool)
 
-    return response
-
-user_pool_ID = runLambda(AddCognitoUserPool,"RequestResponse", event['key1']) #key1 is userpoll name
-runLambda(AddUserToUserPool,"RequestResponse", user_pool_ID, event['kay2']) #key2 is admni mail
-
-def runLambda(lambda_name, invo_type, key1="", key2="", key3=""):
+def runLambda(lambda_name, invo_type, key1=" ", key2=" ", key3=" "):
     client = boto3.client('lambda')
 
     payload = {
-        "key1": key1
-        "key2": key2
+        "key1": key1,
+        "key2": key2,
         "key3": key3
     }
+    
     response = client.invoke(
         FunctionName=lambda_name,
         InvocationType=invo_type,
