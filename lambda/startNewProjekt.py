@@ -9,7 +9,7 @@ def lambda_handler(event, context):
     #ENTER YOUR LAMBDA ARM FOR 'AddCognitoUserPool'
     user_pool_ID = runLambda('arn:aws:lambda:eu-central-1:762785132751:function:AddCognitoUserPoolGit',"RequestResponse", event['key1'])
     #ENTER YOUR ARN FOR 'AddUserToUserPool'
-    runLambda('ARN',"RequestResponse", user_pool_ID, event['kay2']) #key2 is admni mail
+    runLambda('ARN',"RequestResponse", user_pool_ID, event['key2']) #key2 is admni mail
     #ENTER YOUR ARN FOR 'CreateGroupInPool'
     runLambda('ARN', "RequestResponse", user_pool_ID, 'TechUser', 'technical user with higher permitions', 1) #key1: groupName; key2: description; key3: precedence;
     #ENTER YOUR ARN FOR 'AddUserToGroup'
