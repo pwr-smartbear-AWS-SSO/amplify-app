@@ -18,7 +18,7 @@ def lambda_handler(event, context):
     #return user_pool_ID #its for testing if function works properly
 
 
-def runLambda(lambda_name, invo_type, key1="", key2="", key3="", key4=""):
+def runLambda(lambda_name, invo_type, key1=" ", key2=" ", key3=" ", key4=" "):
     client = boto3.client('lambda')
 
     payload = {
