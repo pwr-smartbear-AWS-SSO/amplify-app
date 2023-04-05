@@ -19,3 +19,10 @@
 #3) Stworzenie usera W NASZYM AMPLIFY'OWYM POOLU z uprawnieniami do integracji SSO nowoutworzonego Poola
 #4) Zapisanie id nowego usera, id nowego Poola i id dwuch klientów w Poolu do bazy danych Dynamo
 ########################################################################################################
+
+
+
+# run lambda CreateUserPool(user_pool_name) that returns {user_pool_id: xyz, client1_id: xyz, client2_id: xyz}
+# lambda CreateRole(user_pool_id) that returns iam_role_id/arn
+# lamda CreteUser(tech_user_mail, iam_role_arn) that returns tech_user_id
+# [user_pool_id, cient1_id, client2_id, tech_user_id] >> DynamoDB
