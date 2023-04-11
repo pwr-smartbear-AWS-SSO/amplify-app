@@ -13,6 +13,10 @@
     },
     "categories": {
       "auth": {
+        "amplifyapp": {},
+        "amplifyappbeb3e54a": {}
+      },
+      "api": {
         "amplifyapp": {}
       }
     }

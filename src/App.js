@@ -1,69 +1,21 @@
-import React from 'react';
-import './App.css';
-import { Authenticator, useTheme, Heading, Text } from '@aws-amplify/ui-react';
+import { Amplify} from 'aws-amplify';
+import awsconfig from './aws-exports';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import DisplayPage from './DisplayPage';
 
-const formFields = {
-  confirmVerifyUser: {
-    confirmation_code: {
-      label: 'New Label',
-      placeholder: 'Enter your Confirmation Code:',
-      isRequired: false,
-    },
-  },
-};
+import awsExports from './aws-exports';
+Amplify.configure(awsconfig);
 
-const components = {
-  VerifyUser: {
-    Header() {
-      const { tokens } = useTheme();
-      return (
-        <Heading
-          padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
-          level={3}
-        >
-          Enter Information:
-        </Heading>
-      );
-    },
-    Footer() {
-      return <Text>Footer Information</Text>;
-    },
-  },
 
-  ConfirmVerifyUser: {
-    Header() {
-      const { tokens } = useTheme();
-      return (
-        <Heading
-          padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
-          level={3}
-        >
-          Enter Information:
-        </Heading>
-      );
-    },
-    Footer() {
-      return <Text>Footer Information</Text>;
-    },
-  },
-};
+Amplify.configure(awsExports);
 
-export default function App() {
+function App({ signOut, user }) {
   return (
-    <Authenticator
-    
-      formFields={formFields}
-      components={components}
-      hideSignUp={true}
-    >
-      {({ signOut, user }) => (
-        <main>
-          <p>Hello {user.attributes.name}<button onClick={signOut}>Sign out</button></p>
-          <DisplayPage />
-        </main>
-      )}
-    </Authenticator>
+    <>
+      <h1>Hello {user.username}</h1>
+      <button onClick={signOut}>Sign out</button>
+    </>
   );
 }
+
+export default withAuthenticator(App);
