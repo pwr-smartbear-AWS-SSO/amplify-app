@@ -22,7 +22,8 @@
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
           "s3Key": "amplify-builds/StartNewProjectByLambdaIvocations-4d47593174462f594864-build.zip"
         },
-        "HelloWorld": {}
+        "HelloWorld": {},
+        "CreateUserPool": {}
       },
       "api": {
         "ApiStartNewProject": {}
