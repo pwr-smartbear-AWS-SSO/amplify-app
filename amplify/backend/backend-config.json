@@ -1,20 +1,18 @@
 {
   "api": {
-    "amplifyapp": {
-      "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "additionalAuthenticationProviders": [],
-          "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
-            },
-            "authenticationType": "API_KEY"
-          }
+    "ApiStartNewProject": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "StartNewProjectByLambdaIvocations"
         }
-      },
+      ],
       "providerPlugin": "awscloudformation",
-      "service": "AppSync"
+      "service": "API Gateway"
     }
   },
   "auth": {
@@ -43,6 +41,41 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    }
+  },
+  "function": {
+    "CreateUserPool": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "HelloWorld": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "StartNewProjectByLambdaIvocations": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_StartNewProjectByLambdaIvocations_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "StartNewProjectByLambdaIvocations"
+        }
+      ]
+    },
+    "AMPLIFY_function_StartNewProjectByLambdaIvocations_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "StartNewProjectByLambdaIvocations"
+        }
+      ]
     }
   }
 }

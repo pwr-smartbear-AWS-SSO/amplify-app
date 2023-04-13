@@ -2,11 +2,10 @@ import { Amplify} from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
+import DisplayPage from './DisplayPage';
 
 import awsExports from './aws-exports';
 Amplify.configure(awsconfig);
-
-
 Amplify.configure(awsExports);
 
 function App({ signOut, user }) {
@@ -14,7 +13,9 @@ function App({ signOut, user }) {
     <>
       <h1>Hello {user.username}</h1>
       <button onClick={signOut}>Sign out</button>
+      <DisplayPage />
     </>
+    
   );
 }
 
