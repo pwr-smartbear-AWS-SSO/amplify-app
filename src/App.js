@@ -1,22 +1,34 @@
 import { Amplify} from 'aws-amplify';
 import awsconfig from './aws-exports';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { withAuthenticator, Button, Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import DisplayPage from './DisplayPage';
+import DisplayPage from './ourCode/DisplayPage.js';
+import {components, formFields } from './myCode/auth-setup.js';
+
 
 import awsExports from './aws-exports';
 Amplify.configure(awsconfig);
 Amplify.configure(awsExports);
 
-function App({ signOut, user }) {
+
+export default function App() {
   return (
-    <>
-      <h1>Hello {user.username}</h1>
-      <button onClick={signOut}>Sign out</button>
-      <DisplayPage />
-    </>
-    
+    <Authenticator
+    formFields={formFields}
+    components={components}
+    hideSignUp={true}
+  >
+    {({ signOut, user }) => (
+      <main>
+        <h1>You are logged in as: {user.attributes.email}</h1>
+        <button onClick={signOut}>Sign out</button>
+        <DisplayPage />
+      </main>
+    )}
+  </Authenticator>
   );
 }
 
-export default withAuthenticator(App);
+
+
+
