@@ -1,34 +1,37 @@
-import { Amplify} from 'aws-amplify';
+import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
-import { withAuthenticator, Button, Authenticator } from '@aws-amplify/ui-react';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import DisplayPage from './ourCode/DisplayPage.js';
-import {components, formFields } from './myCode/auth-setup.js';
-
-
+import DisplayPage from './DisplayPage';
 import awsExports from './aws-exports';
+import { useState, useEffect } from 'react';
+
 Amplify.configure(awsconfig);
 Amplify.configure(awsExports);
 
+function App({ signOut, user }) {
+  const [groups, setGroups] = useState([]);
 
-export default function App() {
+  useEffect(() => {
+    async function fetchGroups() {
+      const userData = await Auth.currentAuthenticatedUser();
+      setGroups(userData.signInUserSession.accessToken.payload["cognito:groups"] || []);
+    }
+    fetchGroups();
+  }, []);
+
+  const isAdmin = groups.includes("Customer_Admin_Group");
+
   return (
-    <Authenticator
-    formFields={formFields}
-    components={components}
-    hideSignUp={true}
-  >
-    {({ signOut, user }) => (
-      <main>
-        <h1>You are logged in as: {user.attributes.email}</h1>
-        <button onClick={signOut}>Sign out</button>
+    <>
+      <button onClick={signOut}>Sign out</button>
+      {isAdmin ? (
         <DisplayPage />
-      </main>
-    )}
-  </Authenticator>
+      ) : (
+        <h1>Hello {user.username}</h1>
+      )}
+    </>
   );
 }
 
-
-
-
+export default withAuthenticator(App);

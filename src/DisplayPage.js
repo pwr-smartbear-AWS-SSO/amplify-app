@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import StartNewProject from './StartNewProject.js';
+import React from 'react';
+
 function Page1() {
     return(
       <div>
@@ -11,7 +11,10 @@ function Page1() {
   function Page2() {
     return(
       <div>
-        <StartNewProject />
+      <h1>Customer care view</h1>
+          <button type="button">Do not Click Me!</button><br/>
+          <input type="text" placeholder="John"/><br/>
+          <input type="text" placeholder="John"/>
       </div>
     )
   }
