@@ -44,11 +44,6 @@
     }
   },
   "function": {
-    "CreateUserPool": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "HelloWorld": {
       "build": true,
       "providerPlugin": "awscloudformation",
