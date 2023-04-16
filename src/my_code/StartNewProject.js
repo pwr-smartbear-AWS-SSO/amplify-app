@@ -9,7 +9,7 @@ function StartNewProject() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const path = '/test/${value1}/${value2}';
+      const path = '/createuserpool/${value1}';
       await API.post(api_name, path, {});
       console.log('Lambda function executed successfully.');
     } catch (error) {
