@@ -1,5 +1,20 @@
 {
-  "api": {},
+  "api": {
+    "OurApiAmplifyProject": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "testLambdaApi"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
     "amplifyappbeb3e54a": {
       "customAuth": false,
@@ -35,6 +50,11 @@
       "service": "Lambda"
     },
     "StartNewProjectByLambdaIvocations": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "testLambdaApi": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"

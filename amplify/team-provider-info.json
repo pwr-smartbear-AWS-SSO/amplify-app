@@ -23,7 +23,8 @@
           "s3Key": "amplify-builds/StartNewProjectByLambdaIvocations-4d47593174462f594864-build.zip"
         },
         "HelloWorld": {},
-        "CreateUserPool": {}
+        "CreateUserPool": {},
+        "testLambdaApi": {}
       }
     }
   }
