@@ -11,14 +11,16 @@ function StartNewProject() {
     try { //trying to create userpool
 
       const createuserpool_path = '/createuserpool/${value1}';
-      const new_user_pool_id = await API.post(api_name, createuserpool_path, {});
+      const createuserpool_response = await API.post(api_name, createuserpool_path, {});
+      const new_user_pool_id = createuserpool_response.data;
       console.log('Lambda function creating user pool executed successfully.');
       
       try { //trying to create user
 
         const amplify_pool_id = "eu-central-1_DZgQ3iAsA"
         const createuser_path = '/createuser/${amplify_pool_id}/${value2}';
-        const new_user_id = await API.post(api_name, createuser_path, {});
+        const createuser_response = await API.post(api_name, createuser_path, {});
+        const new_user_id = createuser_response.data;
         console.log('Lambda function creating user executed successfully.');
 
         try { //trying to add user to tech user group
