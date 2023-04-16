@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { API } from 'aws-amplify';
 
 function StartNewProject() {
-  const api_name = 'testLambdaApi';
+  const api_name = 'OurApiAmplifyProject';
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
 
