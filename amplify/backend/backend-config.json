@@ -1,20 +1,5 @@
 {
-  "api": {
-    "ApiStartNewProject": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "StartNewProjectByLambdaIvocations"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    }
-  },
+  "api": {},
   "auth": {
     "amplifyappbeb3e54a": {
       "customAuth": false,

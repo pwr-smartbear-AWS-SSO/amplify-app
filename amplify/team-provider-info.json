@@ -24,9 +24,6 @@
         },
         "HelloWorld": {},
         "CreateUserPool": {}
-      },
-      "api": {
-        "ApiStartNewProject": {}
       }
     }
   }
