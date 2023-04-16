@@ -13,6 +13,16 @@
           "delete"
         ]
       }
+    },
+    "/createuserpool/{value1}": {
+      "name": "/createuserpool/{value1}",
+      "lambdaFunction": "CreateUserPool",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create"
+        ]
+      }
     }
   }
 }

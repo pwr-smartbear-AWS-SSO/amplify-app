@@ -23,7 +23,10 @@
           "s3Key": "amplify-builds/StartNewProjectByLambdaIvocations-4d47593174462f594864-build.zip"
         },
         "HelloWorld": {},
-        "CreateUserPool": {},
+        "CreateUserPool": {
+          "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
+          "s3Key": "amplify-builds/CreateUserPool-31666832724876465a70-build.zip"
+        },
         "testLambdaApi": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
           "s3Key": "amplify-builds/testLambdaApi-766a4f39356938484367-build.zip"

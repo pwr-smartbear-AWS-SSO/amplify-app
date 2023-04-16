@@ -9,6 +9,14 @@
           ],
           "category": "function",
           "resourceName": "testLambdaApi"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "CreateUserPool"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -44,6 +52,11 @@
     }
   },
   "function": {
+    "CreateUserPool": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "HelloWorld": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -61,6 +74,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_CreateUserPool_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateUserPool"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateUserPool_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateUserPool"
+        }
+      ]
+    },
     "AMPLIFY_function_StartNewProjectByLambdaIvocations_deploymentBucketName": {
       "usedBy": [
         {
