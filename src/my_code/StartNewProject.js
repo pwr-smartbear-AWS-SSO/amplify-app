@@ -8,13 +8,53 @@ function StartNewProject() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const path = '/createuserpool/${value1}';
-      await API.post(api_name, path, {});
-      console.log('Lambda function executed successfully.');
-    } catch (error) {
+    try { //trying to create userpool
+
+      const createuserpool_path = '/createuserpool/${value1}';
+      const createuserpool_response = await API.post(api_name, createuserpool_path, {});
+      const new_user_pool_id = createuserpool_response.data;
+      console.log('Lambda function creating user pool executed successfully.');
+      
+      try { //trying to create user
+
+        const amplify_pool_id = "eu-central-1_DZgQ3iAsA"
+        const createuser_path = '/createuser/${amplify_pool_id}/${value2}';
+        const createuser_response = await API.post(api_name, createuser_path, {});
+        const new_user_id = createuser_response.data;
+        console.log('Lambda function creating user executed successfully.');
+
+        try { //trying to add user to tech user group
+
+          const addusertotechusergroup_path = '/addusertotechusergroup/${new_user_id}';
+          await API.post(api_name, addusertotechusergroup_path, {});
+          console.log('Lambda function adding user to techusers executed successfully.');
+
+          try { // trying to add new item to Dynamo DB
+
+            const additemtodb_path = '/additemtodb/${new_user_id}/${new_user_pool_id}/${value1}';
+            await API.post(api_name, additemtodb_path, {});
+            console.log('Lambda function adding item to DynamoDB executed successfully.');
+            
+          } catch (error) { //add item error
+            console.error('Adding item to DynamoDB failed!');
+            console.error(error);
+          }
+    
+        } catch (error) { //add user to group error
+        console.error('Adding user to techusers failed!');
+          console.error(error);
+        }
+
+      } catch (error) { //create user error
+        console.error('Creating User failed!');
+        console.error(error);
+      }
+
+    } catch (error) { //create userpool error
+      console.error('Creating UserPool failed!');
       console.error(error);
     }
+    
   };
 
   return (
