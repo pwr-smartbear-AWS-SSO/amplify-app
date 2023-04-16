@@ -23,6 +23,38 @@
           "create"
         ]
       }
+    },
+    "/createuser/{value1}/{value2}": {
+      "name": "/createuser/{value1}/{value2}",
+      "lambdaFunction": "CreateUser",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "update"
+        ]
+      }
+    },
+    "/addusertotechusergroup/{value1}": {
+      "name": "/addusertotechusergroup/{value1}",
+      "lambdaFunction": "AddUserToTechUserGroup",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "update"
+        ]
+      }
+    },
+    "/additemtodb/{value1}/{value2}/{value3}": {
+      "name": "/additemtodb/{value1}/{value2}/{value3}",
+      "lambdaFunction": "AddItemToDb",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "update"
+        ]
+      }
     }
   }
 }

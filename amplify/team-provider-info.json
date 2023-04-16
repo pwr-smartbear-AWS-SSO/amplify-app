@@ -30,6 +30,18 @@
         "testLambdaApi": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
           "s3Key": "amplify-builds/testLambdaApi-766a4f39356938484367-build.zip"
+        },
+        "CreateUser": {
+          "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
+          "s3Key": "amplify-builds/CreateUser-43704247317152556862-build.zip"
+        },
+        "AddUserToTechUserGroup": {
+          "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
+          "s3Key": "amplify-builds/AddUserToTechUserGroup-4f4a6535764d74523276-build.zip"
+        },
+        "AddItemToDb": {
+          "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
+          "s3Key": "amplify-builds/AddItemToDb-50365a536e394a445830-build.zip"
         }
       },
       "api": {

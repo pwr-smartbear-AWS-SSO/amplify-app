@@ -18,6 +18,27 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "AddItemToDb": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "AddUserToTechUserGroup": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "CreateUser": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "CreateUserPool": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
