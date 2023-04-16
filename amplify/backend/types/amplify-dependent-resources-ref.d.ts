@@ -1,4 +1,11 @@
 export type AmplifyDependentResourcesAttributes = {
+  "api": {
+    "OurApiAmplifyProject": {
+      "ApiId": "string",
+      "ApiName": "string",
+      "RootUrl": "string"
+    }
+  },
   "auth": {
     "amplifyappbeb3e54a": {
       "AppClientID": "string",
@@ -12,6 +19,13 @@ export type AmplifyDependentResourcesAttributes = {
   },
   "function": {
     "StartNewProjectByLambdaIvocations": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "testLambdaApi": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",

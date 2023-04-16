@@ -76,6 +76,22 @@
           "resourceName": "StartNewProjectByLambdaIvocations"
         }
       ]
+    },
+    "AMPLIFY_function_testLambdaApi_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "testLambdaApi"
+        }
+      ]
+    },
+    "AMPLIFY_function_testLambdaApi_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "testLambdaApi"
+        }
+      ]
     }
   }
 }
