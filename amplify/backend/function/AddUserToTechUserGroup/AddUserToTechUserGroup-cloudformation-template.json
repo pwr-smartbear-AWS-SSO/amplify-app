@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "CreateUserPool",
+            "AddUserToTechUserGroup",
             {
               "Fn::Join": [
                 "",
                 [
-                  "CreateUserPool",
+                  "AddUserToTechUserGroup",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "amplifyappLambdaRole0b32aa9d",
+            "amplifyappLambdaRolee95c68b4",
             {
               "Fn::Join": [
                 "",
                 [
-                  "amplifyappLambdaRole0b32aa9d",
+                  "amplifyappLambdaRolee95c68b4",
                   "-",
                   {
                     "Ref": "env"

@@ -23,10 +23,29 @@
           "s3Key": "amplify-builds/StartNewProjectByLambdaIvocations-4d47593174462f594864-build.zip"
         },
         "HelloWorld": {},
-        "CreateUserPool": {}
+        "CreateUserPool": {
+          "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
+          "s3Key": "amplify-builds/CreateUserPool-5a6c54444d663161626d-build.zip"
+        },
+        "testLambdaApi": {
+          "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
+          "s3Key": "amplify-builds/testLambdaApi-766a4f39356938484367-build.zip"
+        },
+        "CreateUser": {
+          "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
+          "s3Key": "amplify-builds/CreateUser-72483752393965745835-build.zip"
+        },
+        "AddUserToTechUserGroup": {
+          "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
+          "s3Key": "amplify-builds/AddUserToTechUserGroup-315472724e2b71386c6e-build.zip"
+        },
+        "AddItemToDb": {
+          "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
+          "s3Key": "amplify-builds/AddItemToDb-2f52554159494b505148-build.zip"
+        }
       },
       "api": {
-        "ApiStartNewProject": {}
+        "OurApiAmplifyProject": {}
       }
     }
   }

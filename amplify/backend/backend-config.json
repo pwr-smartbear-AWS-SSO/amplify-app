@@ -1,6 +1,6 @@
 {
   "api": {
-    "ApiStartNewProject": {
+    "OurApiAmplifyProject": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,39 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "StartNewProjectByLambdaIvocations"
+          "resourceName": "testLambdaApi"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "CreateUserPool"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "CreateUser"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "AddUserToTechUserGroup"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "AddItemToDb"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -44,6 +76,21 @@
     }
   },
   "function": {
+    "AddItemToDb": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "AddUserToTechUserGroup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "CreateUser": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "CreateUserPool": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -58,9 +105,78 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "testLambdaApi": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
+    "AMPLIFY_function_AddItemToDb_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AddItemToDb"
+        }
+      ]
+    },
+    "AMPLIFY_function_AddItemToDb_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AddItemToDb"
+        }
+      ]
+    },
+    "AMPLIFY_function_AddUserToTechUserGroup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AddUserToTechUserGroup"
+        }
+      ]
+    },
+    "AMPLIFY_function_AddUserToTechUserGroup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AddUserToTechUserGroup"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateUserPool_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateUserPool"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateUserPool_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateUserPool"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateUser_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateUser_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateUser"
+        }
+      ]
+    },
     "AMPLIFY_function_StartNewProjectByLambdaIvocations_deploymentBucketName": {
       "usedBy": [
         {
@@ -74,6 +190,22 @@
         {
           "category": "function",
           "resourceName": "StartNewProjectByLambdaIvocations"
+        }
+      ]
+    },
+    "AMPLIFY_function_testLambdaApi_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "testLambdaApi"
+        }
+      ]
+    },
+    "AMPLIFY_function_testLambdaApi_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "testLambdaApi"
         }
       ]
     }
