@@ -8,8 +8,12 @@ function StartNewProject() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(value1);
+    console.log(value2);
     try { //trying to create userpool
-
+      
+      console.log(value1);
+      console.log(value2);
       const createuserpool_path = '/createuserpool/${value1}';
       const createuserpool_response = await API.post(api_name, createuserpool_path, {});
       console.log(createuserpool_response); //debugging
@@ -83,6 +87,7 @@ function StartNewProject() {
         <br />
         <button type="submit">Start Project</button>
       </form>
+    <button onClick={() => API.post('OurApiAmplifyProject', '/createuserpool/NewTestProject', { body: { data: 'example' } })}>Test api</button>
     </div>
   );
 }
