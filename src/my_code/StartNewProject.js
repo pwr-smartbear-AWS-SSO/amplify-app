@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { API } from 'aws-amplify';
 
 function StartNewProject() {
-  const api_name = 'OurApiAmplifyProject';
+  const api_name = 'amplifyappbeb3e54a';
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
 
@@ -87,7 +87,7 @@ function StartNewProject() {
         <br />
         <button type="submit">Start Project</button>
       </form>
-    <button onClick={() => API.post('OurApiAmplifyProject', '/createuserpool/NewTestProject', { body: { data: 'example' } })}>Test api</button>
+    <button onClick={() => API.post('amplifyappbeb3e54a', '/createuserpool/NewTestProject', { body: { data: 'example' } })}>Test api</button>
     </div>
   );
 }
