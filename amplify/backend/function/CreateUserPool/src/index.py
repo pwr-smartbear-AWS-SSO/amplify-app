@@ -1,7 +1,7 @@
 import boto3
 import json
 
-def handler(event, context):
+def lambda_handler(event, context):
    # Set the Cognito User Pool settings
     user_pool_name = event['pathParameters']['value1']
     policies = {

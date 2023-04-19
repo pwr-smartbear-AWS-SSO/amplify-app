@@ -1,7 +1,7 @@
 import boto3
 import json
 
-def handler(event, context):
+def lambda_handler(event, context):
     user_pool_id = event['pathParameters']['value1'] #getting user pool id
     user_name = event['pathParameters']['value2'] #the user name is the email
 
