@@ -1,6 +1,7 @@
 import { Auth } from '@aws-amplify/auth';
 import { useState, useEffect } from 'react';
-import StartNewProject from './StartNewProject.js';
+import SuperuserConsole from './SuperuserConsole/SuperuserConsole.js';
+import TechuserConsole from './TechuserConsole/TechuserConsole.js';
 
 function Console() {
     const [groups, setGroups] = useState([]);
@@ -8,32 +9,24 @@ function Console() {
     useEffect(() => {
       async function fetchGroups() {
             const userData = await Auth.currentAuthenticatedUser();
-            console.log('User data:', userData); //debuging
             const userGroups = userData.signInUserSession.accessToken.payload['cognito:groups'];
-            console.log('User groups:', userGroups);
             setGroups(userGroups || []); 
         }
       fetchGroups();
     }, []);
   
-    console.log('Groups:', groups); //debuging
-
-
     const isAdmin = groups.includes("Customer_Admin_Group");
-    const isTechuser = groups.includes("TechUser");
+    const isTechuser = groups.includes("techuser");
 
     return (
         <div id="Console">
           {isAdmin ? (
-            <div id="Superadmin_console">
-                <h2>Superadmin console:</h2>
-                <StartNewProject />
-            </div>
+            <SuperuserConsole />
           ) : (<></>)}
           {isTechuser ? (
-            <div id="Techuser_console">
-                <h2>Techuser console:</h2>
-            </div>
+            <>
+            <TechuserConsole />
+            </>
           ) : (<></>)}
           
         </div>
