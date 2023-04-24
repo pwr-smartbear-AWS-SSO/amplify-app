@@ -1,4 +1,40 @@
 {
   "version": 1,
-  "paths": {}
+  "paths": {
+    "/StartNewProject/{ProjectName}/{TechUserEmail}": {
+      "name": "/StartNewProject/{ProjectName}/{TechUserEmail}",
+      "lambdaFunction": "StartNewProject",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/GetProjectsListsFromDB": {
+      "name": "/GetProjectsListsFromDB",
+      "lambdaFunction": "GetProjectsListFromDB",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/GetCognitoUsers": {
+      "name": "/GetCognitoUsers",
+      "lambdaFunction": "GetCognitoUsers",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/ListMyProjects/{TechUserId}": {
+      "name": "/ListMyProjects/{TechUserId}",
+      "lambdaFunction": "ListMyProjects",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/GetUsersLists/{UserPoolId}": {
+      "name": "/GetUsersLists/{UserPoolId}",
+      "lambdaFunction": "GetUsersList",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
 }

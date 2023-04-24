@@ -1,7 +1,48 @@
 {
   "api": {
     "OurApiAmplifyProject": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "StartNewProject"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "GetProjectsListFromDB"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "GetCognitoUsers"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "ListMyProjects"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "GetUsersList"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
     }
@@ -35,10 +76,117 @@
     }
   },
   "function": {
+    "GetCognitoUsers": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "GetProjectsListFromDB": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "GetUsersList": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "HelloWorld": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "ListMyProjects": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "StartNewProject": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_GetCognitoUsers_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GetCognitoUsers"
+        }
+      ]
+    },
+    "AMPLIFY_function_GetCognitoUsers_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GetCognitoUsers"
+        }
+      ]
+    },
+    "AMPLIFY_function_GetProjectsListFromDB_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GetProjectsListFromDB"
+        }
+      ]
+    },
+    "AMPLIFY_function_GetProjectsListFromDB_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GetProjectsListFromDB"
+        }
+      ]
+    },
+    "AMPLIFY_function_GetUsersList_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GetUsersList"
+        }
+      ]
+    },
+    "AMPLIFY_function_GetUsersList_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GetUsersList"
+        }
+      ]
+    },
+    "AMPLIFY_function_ListMyProjects_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ListMyProjects"
+        }
+      ]
+    },
+    "AMPLIFY_function_ListMyProjects_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ListMyProjects"
+        }
+      ]
+    },
+    "AMPLIFY_function_StartNewProject_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "StartNewProject"
+        }
+      ]
+    },
+    "AMPLIFY_function_StartNewProject_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "StartNewProject"
+        }
+      ]
     }
   }
 }
