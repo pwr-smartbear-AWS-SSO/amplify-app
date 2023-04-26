@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  /*
+  border-style: solid;
+  border-width: 1px;
+  */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  background-color: rgb(63, 63, 63);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+main{
+	width: 900px;
+	margin: 0 auto;
+  padding: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+h2{
+  background-color: rgb(4, 120, 167);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+h2, .console_element{
+  border-radius: 20px;
+  padding: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.console_element{
+  background-color: rgb(80, 170, 255);
+  margin: 20px;
+  box-shadow: 1px 1px 5px rgb(255, 255, 255, 0.9) inset;
 }
+
+.console_element_header{
+  display: flex;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  color: white;
+  border-bottom: dotted 2px black;
+}
+
+.console_element_header > .console_element_header_buttons {
+  margin-left: auto; 
+  margin-right: 0;
+}
+
+.console_element_header_buttons > button {
+  margin-left: 5px;
+}
+
+button{
+  padding: 1px;
+}
+
+#login_data, h2{
+  box-shadow: 1px 1px 5px lightblue inset;
+}
+
+#login_data_content, h2, .console_element_header{
+  text-shadow: 1px 1px 1px black;
+}
+
+#login_data {
+  margin-left: auto; 
+  margin-right: 0;
+  position: relative;
+  float: right;
+  border-radius: 0 0 0 20px;
+  background-color: rgb(4, 120, 167);
+  color: white;
+}
+
+#login_data_content {
+  display: flex;
+  padding: 10px;
+}
+
+#login_data_content > p {
+  margin-top: 2px;
+  margin-right: 10px;
+}
+
+input{
+  margin-left: 10px;
+}
+
