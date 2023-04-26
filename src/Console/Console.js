@@ -16,7 +16,7 @@ function Console() {
     }, []);
   
     const isAdmin = groups.includes("Customer_Admin_Group");
-    const isTechuser = groups.includes("techuser");
+    const isTechuser = groups.includes("TechUser");
 
     return (
         <div id="Console">

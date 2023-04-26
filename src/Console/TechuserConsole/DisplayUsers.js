@@ -8,7 +8,7 @@ function DisplayUsers({projectId, project_refresh_count}){
         const DispleyProjectUsers = async () => {
             try {
                 console.log(projectId)
-                const response = await API.get('myProjectManagerApi', '/GetUsersList/'+projectId);
+                const response = await API.get('OurApiAmplifyProject', '/GetUsersList/'+projectId);
                 console.log(response);
                 const response_data = Object.values(response).map(str => JSON.parse(str));
                 console.log(response_data);
