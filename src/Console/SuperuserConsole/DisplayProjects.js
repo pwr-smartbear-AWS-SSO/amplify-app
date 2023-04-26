@@ -13,7 +13,7 @@ function DisplayProjects({ displayProjects_refresh_count,  refreshDisplayProject
     useEffect(() => {
         const DispleyProjectsList = async () => {
             try {
-                const response = await API.get('OurApiAmplifyProject', '/GetProjectsListFromDB');
+                const response = await API.get('OurApiAmplifyProject', '/GetProjectsListsFromDB');
                 
                 const response_data = Object.values(response).map(str => JSON.parse(str));
                 setProjectsData(response_data);
