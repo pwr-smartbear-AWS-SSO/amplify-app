@@ -15,10 +15,14 @@ function ProjectConsole({project}){
 
     return(
         <div className='TechUserProjectConsole console_element'>
-            <h3>{project.name}</h3>
-            <button onClick={ChangeVisibility}>{isVisible ? 'Hide Users' : 'Show Users'}</button>
+            <div className='console_element_header'>
+                <h3>{project.name}</h3>
+                <div className='console_element_header_buttons'>
+                    <button onClick={refreshProject}>Refresh</button>
+                    <button onClick={ChangeVisibility}>{isVisible ? 'Hide Users' : 'Show Users'}</button>
+                </div>
+            </div>
             <div style={{ display: isVisible ? 'block' : 'none' }}>
-                <button onClick={refreshProject}>Refresh</button>
                 <DisplayUsers 
                 projectId = {project.user_pool_id} 
                 project_refresh_count = {project_refresh_count} />

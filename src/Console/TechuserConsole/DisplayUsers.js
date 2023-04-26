@@ -29,18 +29,23 @@ function DisplayUsers({projectId, project_refresh_count}){
 
 
     return(
-     <>
-        <ul>
-            {usersList.map((user, index) => {
-                return(
-                    <li key={index}>
-                        {user.userId}: {user.email}
-                    </li>
-                )
-            })}
-        </ul>
-     </>  
-    )
+        <>
+           <table>
+               <tr>
+                   <th>User ID</th>
+                   <th>User Email</th>
+               </tr>
+               {usersList.map((user, index) => {
+                   return(
+                       <tr>
+                           <td>{user.userId}</td>
+                           <td>{user.email}</td>
+                       </tr>
+                   )
+               })}
+           </table>
+        </>  
+       )
 }
 
 export default DisplayUsers;
