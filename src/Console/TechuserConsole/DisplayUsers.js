@@ -34,18 +34,20 @@ function DisplayUsers({projectId, project_refresh_count}){
                <tr>
                    <th>User ID</th>
                    <th>User Email</th>
+                   <th></th>
                </tr>
                {usersList.map((user, index) => {
                    return(
                        <tr>
                            <td>{user.userId}</td>
                            <td>{user.email}</td>
+                           <td className="td_with_delete_button"><button>Delete</button></td>
                        </tr>
                    )
                })}
            </table>
         </>  
        )
-}
+   }
 
 export default DisplayUsers;

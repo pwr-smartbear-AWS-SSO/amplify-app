@@ -49,11 +49,13 @@ function DisplayProjects({ displayProjects_refresh_count,  refreshDisplayProject
                         <tr>
                             <th>Project Name</th>
                             <th>Tech User Email</th>
+                            <th></th>
                         </tr>
                         {Object.keys(projectsData).map((key) => (
                             <tr key={key}>
                                 <td>{projectsData[key].project_name}</td> 
                                 <td>{projectsData[key].tech_user_email}</td>
+                                <td className="td_with_delete_button"><button>Delete</button></td>
                             </tr>
                         ))}
                     </table>
