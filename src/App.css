@@ -12,9 +12,17 @@ body{
 }
 
 
+@media (min-width: 900px) {
+  main{
+    width: 900px;
+    margin: 0 auto;
+  }
+  body{
+  box-shadow: 100px -30px 100px 0px rgb(1, 1, 1, 0.3) inset, -100px -30px 100px 0px rgb(1, 1, 1, 0.3) inset;
+  }
+}
+
 main{
-	width: 900px;
-	margin: 0 auto;
   padding: 20px;
 }
 
@@ -87,3 +95,41 @@ input{
   margin-left: 10px;
 }
 
+table{
+  background-color: white;
+  border-radius: 2px;
+  margin: 0;
+  padding: 0;
+  box-shadow: 1px 1px 1px rgb(0, 0, 0, 0.9);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th{
+  background-color: rgb(4, 120, 167);
+  color: white;
+  text-shadow: 1px 1px 1px black;
+
+  text-align: left;
+}
+
+.td_with_delete_button{
+  text-align: right;
+  padding: 0;
+}
+
+.td_with_delete_button > button{
+  display: none;
+  padding: 0;
+}
+
+td{
+  background-color: white;
+}
+
+td,th{
+  padding: 2px;
+}
+
+tr:hover > td{background-color: rgb(172, 172, 172);}
+tr:hover > td > button{display: inline-block;}
