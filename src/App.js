@@ -13,12 +13,17 @@ export default function App() {
       hideSignUp={true}
     >
       {({ signOut, user }) => (
-        <main>
-          <h1>You are logged in as: {user.attributes.email}</h1>
-          <button onClick={signOut}>Sign out</button>
-          <br />
+        <>
+          <div id="login_data">
+            <div id="login_data_content">
+            <p>You are logged in as: <b>{user.attributes.email}</b></p>
+            <button onClick={signOut}>Sign out</button>
+            </div>
+          </div>
+          <main>
           <Console />
         </main>
+        </>
       )}
     </Authenticator>
   );

@@ -34,24 +34,33 @@ function DisplayProjects({ displayProjects_refresh_count,  refreshDisplayProject
 
 
     return(
-        <div id='DispleyProjectsConsole' className = 'console_element'>
-            <h3>Projects Display</h3>
-            <div>
-                <button onClick={ChangeVisibility}>{isVisible ? 'Hide Projects' : 'Show Projects'}</button>
-                <div id = "display_projects_resoult" style={{ display: isVisible ? 'block' : 'none' }}>
+        <div id='DisplayProjectsConsole' className = 'console_element'>
+            <div className='console_element_header'>
+                <h3>Projects Display</h3>
+                <div className='console_element_header_buttons'>
                     <button onClick={refreshDisplayProjects}>Refresh</button>
-                    <ul>
+                    <button onClick={ChangeVisibility}>{isVisible ? 'Hide Projects' : 'Show Projects'}</button>
+                </div>
+            </div>
+            <div>
+                <div id = "display_projects_resoult" style={{ display: isVisible ? 'block' : 'none' }}>
+                    
+                    <table>
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Tech User Email</th>
+                        </tr>
                         {Object.keys(projectsData).map((key) => (
-                            <li key={key}>
-                                {projectsData[key].project_name}: {projectsData[key].tech_user_email}
-                            </li>
+                            <tr key={key}>
+                                <td>{projectsData[key].project_name}</td> 
+                                <td>{projectsData[key].tech_user_email}</td>
+                            </tr>
                         ))}
-                    </ul>
+                    </table>
                 </div>
             </div>
         </div>
     )
 }
-
 
 export default DisplayProjects;

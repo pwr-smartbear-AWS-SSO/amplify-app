@@ -28,7 +28,9 @@ function StartNewProject({ refreshDisplayProjects }) {
 
   return (
     <div id = "NewProjectConsole" className = 'console_element'>
+      <div className='console_element_header'>
       <h3>Start New Project</h3>
+      </div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="value1">New Project Name:</label>
         <input
