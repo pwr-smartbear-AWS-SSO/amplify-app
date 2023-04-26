@@ -12,7 +12,7 @@ function TechuserConsole() {
             try {
                 const userData = await Auth.currentAuthenticatedUser();
                 console.log(userData.username);
-                const response = await API.get('myProjectManagerApi', '/ListMyProjects/'+userData.username);
+                const response = await API.get('OurApiAmplifyProject', '/ListMyProjects/'+userData.username);
                 console.log(response);
                 const response_data = Object.values(response).map(str => JSON.parse(str));
                 console.log(response_data);

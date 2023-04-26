@@ -11,7 +11,7 @@ function StartNewProject({ refreshDisplayProjects }) {
     event.preventDefault();
     try { 
       const startProjectPath = '/StartNewProject/'+value1+"/"+value2;
-      await API.post('myProjectManagerApi', startProjectPath, {});
+      await API.post('OurApiAmplifyProject', startProjectPath, {});
       console.log('Lambda function starting new project executed successfully.');
       submitResoult.textContent = 'New Project Created!';
       setTimeout(() => {
