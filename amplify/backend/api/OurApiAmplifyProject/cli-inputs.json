@@ -5,7 +5,29 @@
       "name": "/StartNewProject/{ProjectName}/{TechUserEmail}",
       "lambdaFunction": "StartNewProject",
       "permissions": {
-        "setting": "open"
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ],
+        "iam": [
+          {
+            "effect": "allow",
+            "actions": [
+              "lambda:InvokeFunction"
+            ],
+            "resources": [
+              "*"
+            ],
+            "conditions": {
+              "StringEquals": {
+                "aws:PrincipalTag/GroupName": "TechUser"
+              }
+            }
+          }
+        ]
       }
     },
     "/GetProjectsListsFromDB": {
