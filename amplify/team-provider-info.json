@@ -21,11 +21,11 @@
         "HelloWorld": {},
         "StartNewProject": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
-          "s3Key": "amplify-builds/StartNewProject-37335255746131422f70-build.zip"
+          "s3Key": "amplify-builds/StartNewProject-643359323278515a4679-build.zip"
         },
         "GetProjectsListFromDB": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
-          "s3Key": "amplify-builds/GetProjectsListFromDB-637271356e7a6c6f786e-build.zip"
+          "s3Key": "amplify-builds/GetProjectsListFromDB-30347373554f49322b6c-build.zip"
         },
         "GetCognitoUsers": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
@@ -33,11 +33,11 @@
         },
         "ListMyProjects": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
-          "s3Key": "amplify-builds/ListMyProjects-6976744c4d4e477a7372-build.zip"
+          "s3Key": "amplify-builds/ListMyProjects-31526f34576276766f2b-build.zip"
         },
         "GetUsersList": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
-          "s3Key": "amplify-builds/GetUsersList-634e634944336b6c4170-build.zip"
+          "s3Key": "amplify-builds/GetUsersList-336b38543144646c4465-build.zip"
         }
       },
       "api": {
