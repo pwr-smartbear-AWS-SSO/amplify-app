@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import DisplayUsers from './DisplayUsers.js';
+import ConfigureSSO from './ConfigureSSO.js';
 
 function ProjectConsole({project}){
     const [isVisible, setIsVisible] = useState(true);
@@ -33,18 +34,7 @@ function ProjectConsole({project}){
             <div className='console_element_header'>
                 <h3>Manage SSO for {project.name}</h3>
             </div>
-            <form>
-                <lable>lable1</lable>
-                <input />
-                <br />
-                <lable>lable2</lable>
-                <input />
-                <br />
-                <lable>lable3</lable>
-                <input />
-                <br />
-                <button type="submit">Submit SSO</button>
-            </form>
+            <ConfigureSSO />
         </div>
         </>
     )
