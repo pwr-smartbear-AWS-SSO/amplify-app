@@ -21,6 +21,12 @@ body{
   box-shadow: 100px -30px 100px 0px rgb(1, 1, 1, 0.3) inset, -100px -30px 100px 0px rgb(1, 1, 1, 0.3) inset;
   }
 }
+@media (max-width: 899px){
+  body{
+    box-shadow: 10px -3px 10px 0px rgb(1, 1, 1, 0.3) inset, -10px -3px 10px 0px rgb(1, 1, 1, 0.3) inset;
+    }
+}
+
 
 main{
   padding: 20px;
@@ -133,3 +139,62 @@ td,th{
 
 tr:hover > td{background-color: rgb(172, 172, 172);}
 tr:hover > td > button{display: inline-block;}
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.sso_checkbox > input {
+  margin-right: 5px;
+}
+
+.sso_checkbox {
+  margin-right: 10px;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  background-color: rgb(4, 120, 167);
+  padding: 5px;
+  padding-left: 0px;
+  box-shadow: 1px 1px 1px rgb(0, 0, 0, 0.9);
+  border-radius: 2px;
+}
+
+@media (max-width: 509px){
+  .sso_checkbox{
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+@media (min-width: 510px){
+  .sso_checkbox{
+    margin-bottom: 30px;
+  }
+}
+
+.inputbox{
+  margin-bottom: 6px;
+}
+
+/*
+#upload_file_button{
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  background-color: rgb(4, 120, 167);
+  padding: 2px;
+  box-shadow: 1px 1px 1px rgb(0, 0, 0, 0.9);
+  border-radius: 2px;
+  display: inline-block;
+}
+#upload_file_button:hover{
+  background-color: rgb(80, 140, 163);
+}
+#upload_file_button > input{
+  display: neno;
+}
+                        
+*/
