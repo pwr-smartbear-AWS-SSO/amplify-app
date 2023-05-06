@@ -78,7 +78,7 @@ def AddUserToGroup(user_pool_id, user_name, group_name):
         GroupName=group_name
     )
 
-def AddItemToDB(table_name, tech_user_id, user_pool_id, tech_user_email, project_name):
+def AddItemToDB(table_name, tech_user_id, user_pool_id, tech_user_email, project_name, domain_prefix, client1_name, client2_name):
     client = boto3.client('dynamodb')
     
     response = client.put_item(
