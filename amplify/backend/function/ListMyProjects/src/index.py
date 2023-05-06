@@ -17,9 +17,14 @@ def handler(event, context):
     items_arrey = response['Items']
     
     tech_user_projects = []
-    for item_arrey in items_arrey:
-        if item_arrey['tech_user_id'] == tech_user_id:
-            tech_user_projects.append(json.dumps({'name': item_arrey['project_name'], 'user_pool_id': item_arrey['user_pool_id']}))
+    for item in items_arrey:
+        if item['tech_user_id'] == tech_user_id:
+            tech_user_projects.append(json.dumps({
+              'name': item['project_name'], 
+              'user_pool_id': item['user_pool_id'], 
+              'domain_url': item['domain_url'], 
+              'client1': item['client1_name'], 
+              'client2': item['client2_name']}))
     
     return {
   'statusCode': 200,
