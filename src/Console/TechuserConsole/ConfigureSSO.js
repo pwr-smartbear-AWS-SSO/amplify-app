@@ -1,29 +1,36 @@
 import React, {useState} from 'react';
+import { API } from 'aws-amplify';
 
 
-function ConfigureSSO({projectId, domainUrl}){
+function ConfigureSSO({projectId, domainUrl, project_name}){
     const [secret, setSecret] = useState('');
     const [displayFileOption, setDisplayFileOption] = useState(false);
     const [emailAttrMap, setEmailAttrMap] = useState('email');
     const [metadataFile, setMetadataFile] = useState();
     const [metadataURL, setMetadataURL] = useState('');
-    const submitResoult = document.getElementById('subbmit_resoult');
+
     const projectUri = "urn:amazon:cognito:sp:"+projectId;
+
+    const submitResoult = document.getElementById('subbmit_resoult');
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         try { 
-          const SSOconfigPath = '/AddIdentityProvider/'+projectId+'/{ProviderName}';
-          await API.post('OurApiAmplifyProject', SSOconfigPath, {});
-          console.log('Lambda function executed successfully.');
-          submitResoult.textContent = 'SSO configured succefully';
+            const formData = new FormData();
+            formData.append('file', metadataFile, 'metadata_xml_file');
+
+            const SSOconfigPath = '/AddIdentityProvider/'+projectId+'/'+project_name;
+            await API.post('OurApiAmplifyProject', SSOconfigPath, {body: formData});
+            console.log('Lambda function executed successfully.');
+            submitResoult.textContent = 'SSO configured succefully';
           
         } catch (error) {
-          console.error('Creting new project failed!');
-          console.error(error);
-          submitResoult.textContent = 'Something went wrong!';
+            console.error('SSO configuration failed!');
+            console.error(error);
+            submitResoult.textContent = 'Something went wrong!';
         }
-        
-      };
+    };
+
     const toggleFileOption = () => {
         setDisplayFileOption(!displayFileOption);
       };
@@ -62,7 +69,7 @@ function ConfigureSSO({projectId, domainUrl}){
             <br />
             <br />
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className='inputbox'>
                     <label htmlFor="secret">SSO secret key:</label>
                     <input
