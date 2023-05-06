@@ -40,7 +40,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "GetUsersList"
+          "resourceName": "CreateIdentityProvider"
         },
         {
           "attributes": [
@@ -48,7 +48,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "CreateIdentityProvider"
+          "resourceName": "GetUsersList"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -100,11 +100,6 @@
       "service": "Lambda"
     },
     "GetUsersList": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "HelloWorld": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"

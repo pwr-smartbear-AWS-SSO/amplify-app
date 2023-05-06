@@ -51,16 +51,16 @@
         "setting": "open"
       }
     },
-    "/GetUsersLists/{UserPoolId}": {
-      "name": "/GetUsersLists/{UserPoolId}",
-      "lambdaFunction": "GetUsersList",
+    "/AddIdentityProvider/{UserPoolId}/{ProviderName}": {
+      "name": "/AddIdentityProvider/{UserPoolId}/{ProviderName}",
+      "lambdaFunction": "CreateIdentityProvider",
       "permissions": {
         "setting": "open"
       }
     },
-    "/AddIdentityProvider/{UserPoolId}/{ProviderName}": {
-      "name": "/AddIdentityProvider/{UserPoolId}/{ProviderName}",
-      "lambdaFunction": "CreateIdentityProvider",
+    "/GetUsersList/{UserPoolId}": {
+      "name": "/GetUsersList/{UserPoolId}",
+      "lambdaFunction": "GetUsersList",
       "permissions": {
         "setting": "open"
       }

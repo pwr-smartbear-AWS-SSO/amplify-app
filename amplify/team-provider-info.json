@@ -18,7 +18,6 @@
         "amplifyappbeb3e54a": {}
       },
       "function": {
-        "HelloWorld": {},
         "StartNewProject": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
           "s3Key": "amplify-builds/StartNewProject-643359323278515a4679-build.zip"
