@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 
 
-function ConfigureSSO(){
+function ConfigureSSO({projectId, domainUrl}){
     const [secret, setSecret] = useState('');
     const [displayFileOption, setDisplayFileOption] = useState(false);
     const [emailAttrMap, setEmailAttrMap] = useState('email');
     const [metadataFile, setMetadataFile] = useState();
     const [metadataURL, setMetadataURL] = useState('');
+
+    const projectUri = "urn:amazon:cognito:sp:"+projectId;
 
     const toggleFileOption = () => {
         setDisplayFileOption(!displayFileOption);
@@ -14,6 +16,16 @@ function ConfigureSSO(){
       
     return(
         <>
+            <table>
+                <tr>
+                    <th>Single sign on URL</th>
+                    <td>{domainUrl}</td>
+                </tr>
+                <tr>
+                    <th>Audience URI</th>
+                    <td>{projectUri}</td>
+                </tr>
+            </table>
 
             <label className='sso_checkbox'>
                 <input
