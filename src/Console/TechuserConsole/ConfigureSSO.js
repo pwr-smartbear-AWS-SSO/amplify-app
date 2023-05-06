@@ -7,9 +7,23 @@ function ConfigureSSO({projectId, domainUrl}){
     const [emailAttrMap, setEmailAttrMap] = useState('email');
     const [metadataFile, setMetadataFile] = useState();
     const [metadataURL, setMetadataURL] = useState('');
-
+    const submitResoult = document.getElementById('subbmit_resoult');
     const projectUri = "urn:amazon:cognito:sp:"+projectId;
-
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try { 
+          const SSOconfigPath = '/AddIdentityProvider/'+projectId+'/{ProviderName}';
+          await API.post('OurApiAmplifyProject', SSOconfigPath, {});
+          console.log('Lambda function executed successfully.');
+          submitResoult.textContent = 'SSO configured succefully';
+          
+        } catch (error) {
+          console.error('Creting new project failed!');
+          console.error(error);
+          submitResoult.textContent = 'Something went wrong!';
+        }
+        
+      };
     const toggleFileOption = () => {
         setDisplayFileOption(!displayFileOption);
       };
@@ -93,7 +107,7 @@ function ConfigureSSO({projectId, domainUrl}){
 
                 <button type="submit">Submit SSO</button>
             </form>
-
+            <div id = "subbmit_resoult"></div>
         </>
     )
 }
