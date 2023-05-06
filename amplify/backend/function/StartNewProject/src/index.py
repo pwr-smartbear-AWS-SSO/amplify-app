@@ -10,7 +10,7 @@ def handler(event, context):
     
     new_user_pool_data = CreateUserPool(project_name)
     new_user_name = CreateUser(amplify_pool_id, tech_user_email)
-    AddUserToGroup(amplify_pool_id, new_user_name, 'techuser')
+    AddUserToGroup(amplify_pool_id, new_user_name, 'TechUser')
     AddItemToDB("tech_user_list", new_user_name, new_user_pool_data['id'], tech_user_email, project_name)
 
     return {
