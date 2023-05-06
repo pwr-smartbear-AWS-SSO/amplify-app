@@ -41,6 +41,14 @@
           ],
           "category": "function",
           "resourceName": "GetUsersList"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "CreateIdentityProvider"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -76,6 +84,11 @@
     }
   },
   "function": {
+    "CreateIdentityProvider": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "GetCognitoUsers": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -108,6 +121,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_CreateIdentityProvider_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateIdentityProvider"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateIdentityProvider_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateIdentityProvider"
+        }
+      ]
+    },
     "AMPLIFY_function_GetCognitoUsers_deploymentBucketName": {
       "usedBy": [
         {

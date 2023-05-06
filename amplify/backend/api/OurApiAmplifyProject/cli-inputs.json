@@ -57,6 +57,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/AddIdentityProvider/{UserPoolId}/{ProviderName}": {
+      "name": "/AddIdentityProvider/{UserPoolId}/{ProviderName}",
+      "lambdaFunction": "CreateIdentityProvider",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

@@ -38,6 +38,10 @@
         "GetUsersList": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
           "s3Key": "amplify-builds/GetUsersList-336b38543144646c4465-build.zip"
+        },
+        "CreateIdentityProvider": {
+          "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
+          "s3Key": "amplify-builds/CreateIdentityProvider-59544637645431682f59-build.zip"
         }
       },
       "api": {
