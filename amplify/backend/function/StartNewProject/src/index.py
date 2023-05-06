@@ -108,7 +108,7 @@ def AddItemToDB(table_name, tech_user_id, user_pool_id, tech_user_email, project
     })
 
 def CreateDomain(user_pool_id, project_name):
-    domain_prefix = ((project_name.lower())+"-projectmanager-cxnajder-was-here")
+    domain_prefix = ((project_name.lower())+"-cxnajder-was-here")
     cognito = boto3.client('cognito-idp')
     response = cognito.create_user_pool_domain(
         Domain=domain_prefix,
