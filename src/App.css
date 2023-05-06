@@ -180,6 +180,14 @@ tr:hover > td > button{display: inline-block;}
   margin-bottom: 6px;
 }
 
+
+.TechUserProjectConsoleSSOManager table{
+  margin-bottom: 30px;
+}
+
+tr:not(:last-child) {
+    border-bottom: solid 1px rgb(0, 0, 0, 0.4);
+}
 /*
 #upload_file_button{
   color: white;
