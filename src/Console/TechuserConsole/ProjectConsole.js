@@ -34,7 +34,9 @@ function ProjectConsole({project}){
             <div className='console_element_header'>
                 <h3>Manage SSO for {project.name}</h3>
             </div>
-            <ConfigureSSO />
+            <ConfigureSSO 
+            projectId = {project.user_pool_id} 
+            domainUrl = {project.domain_url}/>
         </div>
         </>
     )
