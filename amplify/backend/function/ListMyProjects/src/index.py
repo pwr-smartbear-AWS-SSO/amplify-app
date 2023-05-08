@@ -23,8 +23,8 @@ def handler(event, context):
               'name': item['project_name'], 
               'user_pool_id': item['user_pool_id'], 
               'domain_url': item['domain_url'], 
-              'client1': item['client1_name'], 
-              'client2': item['client2_name']}))
+              'client1_id': item['client1_id'], 
+              'client2_id': item['client2_id']}))
     
     return {
   'statusCode': 200,
