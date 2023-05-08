@@ -10,7 +10,7 @@ def handler(event, context):
     
     request_body = json.loads(event['body'])
 
-    attr_map_json = json.loads(request_body['attributesMap'])
+    attr_map_json = request_body['attributesMap']
     
     metadata_json = {}
     metadata_method = request_body['metadataMethod'] # 'xml_file' | 'url'
