@@ -2,12 +2,35 @@ import React, {useState} from 'react';
 import { API } from 'aws-amplify';
 
 
-function ConfigureSSO({projectId, domainUrl, project_name}){
-    const [secret, setSecret] = useState('');
+function ConfigureSSO({projectId, domainUrl, project_name, clients}){
+    const [identifier, setIdentifier] = useState('');
     const [displayFileOption, setDisplayFileOption] = useState(false);
-    const [emailAttrMap, setEmailAttrMap] = useState('email');
     const [metadataFile, setMetadataFile] = useState();
     const [metadataURL, setMetadataURL] = useState('');
+    const [clinetIdNumber, setClientIdNumber] = useState(0);
+
+
+    const [attributes, setAttributes] = useState([]);
+    const [newAttribute, setNewAttribute] = useState("");
+    const [newMapping, setNewMapping] = useState("");
+
+    const addAttribute = () => {
+        if (newAttribute.trim() === "" || newMapping.trim() === "") return;
+        
+            setAttributes((prev) => [...prev, { name: newAttribute, mapping: newMapping }]);
+            setNewAttribute("");
+            setNewMapping("");
+        };
+        
+        
+    const handleMappingChange = (e) => {
+        setNewMapping(e.target.value);
+    };
+        
+    const handleAttributeSelect = (e) => {
+        setNewAttribute(e.target.value);
+    };
+        
 
     const projectUri = "urn:amazon:cognito:sp:"+projectId;
 
@@ -15,12 +38,45 @@ function ConfigureSSO({projectId, domainUrl, project_name}){
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        try { 
-            const formData = new FormData();
-            formData.append('file', metadataFile, 'metadata_xml_file');
 
+        const attributeMap = {};
+        attributes.forEach((attr) => {
+        attributeMap[attr.name] = attr.mapping;
+        });
+        console.log(attributeMap);
+
+        try { 
             const SSOconfigPath = '/AddIdentityProvider/'+projectId+'/'+project_name;
-            await API.post('OurApiAmplifyProject', SSOconfigPath, {body: formData});
+            if (displayFileOption) {
+                const formData = new FormData();
+                formData.append('file', metadataFile, 'metadata_xml_file');
+
+                const response = await API.post('OurApiAmplifyProject', SSOconfigPath, {
+                    body: {
+                        metadataMethod: 'xml_file',
+                        metadata: formData,
+                        attributesMap: attributeMap,
+                        idpIdentifier: identifier,
+                        clientId: clients[clinetIdNumber]
+                    }
+                });
+
+                console.log(response);
+
+            } else {
+                const response = await API.post('OurApiAmplifyProject', SSOconfigPath, {
+                    body: {
+                        metadataMethod: 'url',
+                        metadata: metadataURL,
+                        attributesMap: attributeMap,
+                        idpIdentifier: identifier,
+                        clientId: clients[clinetIdNumber]
+                    }
+                });
+
+                console.log(response);
+
+            }
             console.log('Lambda function executed successfully.');
             submitResoult.textContent = 'SSO configured succefully';
           
@@ -35,6 +91,14 @@ function ConfigureSSO({projectId, domainUrl, project_name}){
         setDisplayFileOption(!displayFileOption);
       };
       
+    const toggleClient = () => {
+        if (clinetIdNumber === 0){
+            setClientIdNumber(1);
+        }else{
+            setClientIdNumber(0);
+        }
+    };
+
     return(
         <>
             <table>
@@ -48,10 +112,12 @@ function ConfigureSSO({projectId, domainUrl, project_name}){
                 </tr>
             </table>
 
+            <br />
+
             <label className='sso_checkbox'>
                 <input
                 type="checkbox"
-                checked={displayFileOption}
+                checked={!displayFileOption}
                 onChange={toggleFileOption}
                 />
                 cnofigure with URL
@@ -60,7 +126,7 @@ function ConfigureSSO({projectId, domainUrl, project_name}){
             <label className='sso_checkbox'>
                 <input
                 type="checkbox"
-                checked={!displayFileOption}
+                checked={displayFileOption}
                 onChange={toggleFileOption}
                 />
                 cnofigure with XML file
@@ -71,17 +137,17 @@ function ConfigureSSO({projectId, domainUrl, project_name}){
 
             <form onSubmit={handleSubmit}>
                 <div className='inputbox'>
-                    <label htmlFor="secret">SSO secret key:</label>
+                    <label htmlFor="identifier">Domain / Company Identifier:</label>
                     <input
-                    id="secret"
-                    type="password"
-                    value={secret}
-                    onChange={(event) => setSecret(event.target.value)}
+                    id="identifier"
+                    type="text"
+                    value={identifier}
+                    onChange={(event) => setIdentifier(event.target.value)}
                     />
                 </div>
 
                 <div className='inputbox'>
-                    <div className={displayFileOption ? "visible" : "hidden"}>
+                    <div className={!displayFileOption ? "visible" : "hidden"}>
                         <label htmlFor="metadataURL">URL:</label>
                         <input 
                         id = "metadataURL"
@@ -92,7 +158,7 @@ function ConfigureSSO({projectId, domainUrl, project_name}){
                 </div>
 
                 <div className='inputbox' id ="upload_file_button">
-                    <div className={!displayFileOption ? "visible" : "hidden"}>
+                    <div className={displayFileOption ? "visible" : "hidden"}>
                         <label>XML file:</label>
                         <input
                         type="file"
@@ -103,14 +169,72 @@ function ConfigureSSO({projectId, domainUrl, project_name}){
                     </div>
                 </div>
 
-                <div className='inputbox'>
-                    <label>Email attribute mapping:</label>
+                
+                <table className="attributesBox">
+                    <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Mapping</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {attributes.map((attr, index) => (
+                        <tr key={index}>
+                            <td>{attr.name}</td>
+                            <td>{attr.mapping}</td>
+                            <td className="td_with_delete_button"><button type="button">Delete</button></td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+
+
+                <div>
+                    <select value={newAttribute} onChange={handleAttributeSelect}>
+                    <option value="">Select an attribute</option>
+                    <option value="email">Email</option>
+                    <option value="email_verified">Email Verified</option>
+                    <option value="phone_number">Phone Number</option>
+                    <option value="phone_number_verified">Phone Number Verified</option>
+                    <option value="given_name">Given Name</option>
+                    <option value="middle_name">Middle Name</option>
+                    <option value="family_name">Family Name</option>
+                    <option value="name">Name</option>
+                    <option value="nickname">Nickname</option>
+                    <option value="username">Username</option>
+                    <option value="prefered_username">Prefered Username</option>
+                    <option value="address">Addrress</option>
+                    <option value="birthdate">Birthdate</option>
+
+                    </select>
                     <input
                     type="text"
-                    value = {emailAttrMap}
-                    onChange={(event) => setEmailAttrMap(event.target.value)}
+                    value={newMapping}
+                    onChange={handleMappingChange}
+                    placeholder="Enter mapping"
                     />
+                    <button type="button" onClick={addAttribute}>Add Attribute</button>
                 </div>
+                
+                <br />
+                <label className='sso_checkbox'>
+                    <input
+                    type="checkbox"
+                    checked={!clinetIdNumber}
+                    onChange={toggleClient}
+                    />
+                    Client 1
+                </label>
+
+                <label className='sso_checkbox'>
+                    <input
+                    type="checkbox"
+                    checked={clinetIdNumber}
+                    onChange={toggleClient}
+                    />
+                    Client 2
+                </label>
 
                 <button type="submit">Submit SSO</button>
             </form>
@@ -120,3 +244,6 @@ function ConfigureSSO({projectId, domainUrl, project_name}){
 }
 
 export default ConfigureSSO;
+
+
+
