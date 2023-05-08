@@ -21,7 +21,7 @@ def handler(event, context):
     elif metadata_method == 'url':
         metadata_json['MetadataURL'] = request_body['metadata']
     
-    idp_identifier = request_body['idpIdentifier']
+    idp_identifiers = request_body['idpIdentifiers']
 
     client_id = request_body['clientId']
     
@@ -33,11 +33,11 @@ def handler(event, context):
     )
     if len(list_response['Providers']) == 0:
         #crreate one
-        CreateIdp(client, user_pool_id, provider_name, metadata_json, attr_map_json, idp_identifier)
+        CreateIdp(client, user_pool_id, provider_name, metadata_json, attr_map_json, idp_identifiers)
         
     else:
         #update existing
-        UpdateIdp(client, user_pool_id, provider_name, metadata_json, attr_map_json, idp_identifier)
+        UpdateIdp(client, user_pool_id, provider_name, metadata_json, attr_map_json, idp_identifiers)
 
     UpdateClient(client, client_id, user_pool_id, provider_name, 'https://jwt.io/')
 
@@ -53,31 +53,29 @@ def handler(event, context):
         })
     }
 
-def CreateIdp(client, user_pool_id, provider_name, metadata_json, attr_map_json, idp_id):
+def CreateIdp(client, user_pool_id, provider_name, metadata_json, attr_map_json, idp_ids):
     create_response = client.create_identity_provider(
         UserPoolId=user_pool_id,                # REQUESTED
         ProviderName=provider_name,             # REQUESTED
         ProviderType='SAML',                    # REQUESTED
         ProviderDetails= metadata_json,         # REQUESTED
         AttributeMapping= attr_map_json,
-        IdpIdentifiers=[
-        idp_id,
-        ]
+        IdpIdentifiers=idp_ids
     )
     print('CreateIdP response:')
     print(create_response)
         
         
-def UpdateIdp(client, user_pool_id, provider_name, metadata_json, attr_map_json, idp_id):
-    response = client.update_identity_provider(
+def UpdateIdp(client, user_pool_id, provider_name, metadata_json, attr_map_json, idp_ids):
+    update_response = client.update_identity_provider(
         UserPoolId=user_pool_id,                # REQUESTED
         ProviderName=provider_name,             # REQUESTED
         ProviderDetails= metadata_json,
         AttributeMapping= attr_map_json,
-        IdpIdentifiers=[
-        idp_id,
-        ]
+        IdpIdentifiers=idp_ids
     )
+    print('UpdateIdP response:')
+    print(update_response)  
 
 def UpdateClient(client, client_id, user_pool_id, idprovider_name, callback_url):
     response = client.update_user_pool_client(

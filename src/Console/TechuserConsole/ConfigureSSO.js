@@ -3,7 +3,6 @@ import { API } from 'aws-amplify';
 
 
 function ConfigureSSO({projectId, domainUrl, project_name, clients}){
-    const [identifier, setIdentifier] = useState('');
     const [displayFileOption, setDisplayFileOption] = useState(false);
     const [metadataFile, setMetadataFile] = useState();
     const [metadataURL, setMetadataURL] = useState('');
@@ -32,6 +31,16 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
     };
         
 
+
+    const [inputValue, setInputValue] = useState('');
+    const [tableData, setTableData] = useState([]);
+
+    const handleAddClick = () => {
+        setTableData([...tableData, inputValue]);
+        setInputValue('');
+      };
+
+
     const projectUri = "urn:amazon:cognito:sp:"+projectId;
 
     const submitResoult = document.getElementById('subbmit_resoult');
@@ -56,7 +65,7 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
                         metadataMethod: 'xml_file',
                         metadata: formData,
                         attributesMap: attributeMap,
-                        idpIdentifier: identifier,
+                        idpIdentifiers: tableData,
                         clientId: clients[clinetIdNumber]
                     }
                 });
@@ -69,7 +78,7 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
                         metadataMethod: 'url',
                         metadata: metadataURL,
                         attributesMap: attributeMap,
-                        idpIdentifier: identifier,
+                        idpIdentifiers: tableData,
                         clientId: clients[clinetIdNumber]
                     }
                 });
@@ -136,14 +145,35 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
             <br />
 
             <form onSubmit={handleSubmit}>
-                <div className='inputbox'>
-                    <label htmlFor="identifier">Domain / Company Identifier:</label>
-                    <input
-                    id="identifier"
-                    type="text"
-                    value={identifier}
-                    onChange={(event) => setIdentifier(event.target.value)}
-                    />
+
+                <div>
+                    <table className="domainsBox">
+                        <thead>
+                            <tr>
+                            <th>Identifiers</th>
+                            <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tableData.map((value, index) => (
+                            <tr key={index}>
+                                <td>{value}</td>
+                                <td className="td_with_delete_button"><button type="button">Delete</button></td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <div className='inputbox'>
+                        <label htmlFor="identifier">Domain / Company Identifier:</label>
+                        <input
+                        id="identifier"
+                        type="text"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        />
+                        <button type="button" onClick={handleAddClick}>Add</button>
+                        <p>Leave empyt to allow any @example.com</p>
+                    </div>
                 </div>
 
                 <div className='inputbox'>
@@ -244,6 +274,8 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
 }
 
 export default ConfigureSSO;
+
+
 
 
 

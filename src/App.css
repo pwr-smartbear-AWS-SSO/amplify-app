@@ -23,6 +23,9 @@ body{
   .attributesBox{
     width: 550px;
   }
+  .domainsBox{
+    width: 200px;
+  }
 }
 @media (max-width: 899px){
   body{
