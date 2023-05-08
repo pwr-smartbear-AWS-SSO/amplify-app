@@ -20,6 +20,9 @@ body{
   body{
   box-shadow: 100px -30px 100px 0px rgb(1, 1, 1, 0.3) inset, -100px -30px 100px 0px rgb(1, 1, 1, 0.3) inset;
   }
+  .attributesBox{
+    width: 550px;
+  }
 }
 @media (max-width: 899px){
   body{
@@ -33,7 +36,7 @@ main{
 }
 
 h2{
-  background-color: rgb(4, 120, 167);
+  background-color: #0B9AC6;
   color: white;
 }
 
@@ -43,7 +46,7 @@ h2, .console_element{
 }
 
 .console_element{
-  background-color: rgb(80, 170, 255);
+  background-color: #8cdbe6;
   margin: 20px;
   box-shadow: 1px 1px 5px rgb(255, 255, 255, 0.9) inset;
 }
@@ -68,6 +71,9 @@ h2, .console_element{
 button{
   padding: 1px;
 }
+select{
+  padding: 2px;
+}
 
 #login_data, h2{
   box-shadow: 1px 1px 5px lightblue inset;
@@ -83,7 +89,7 @@ button{
   position: relative;
   float: right;
   border-radius: 0 0 0 20px;
-  background-color: rgb(4, 120, 167);
+  background-color: #0B9AC6;
   color: white;
 }
 
@@ -98,7 +104,8 @@ button{
 }
 
 input{
-  margin-left: 10px;
+  margin-left: 20px;
+  margin-right: 10px;
 }
 
 table{
@@ -112,7 +119,7 @@ table{
 }
 
 th{
-  background-color: rgb(4, 120, 167);
+  background-color: #0B9AC6;
   color: white;
   text-shadow: 1px 1px 1px black;
 
@@ -156,7 +163,7 @@ tr:hover > td > button{display: inline-block;}
   margin-right: 10px;
   color: white;
   text-shadow: 1px 1px 1px black;
-  background-color: rgb(4, 120, 167);
+  background-color: #0B9AC6;
   padding: 5px;
   padding-left: 0px;
   box-shadow: 1px 1px 1px rgb(0, 0, 0, 0.9);
@@ -182,7 +189,7 @@ tr:hover > td > button{display: inline-block;}
 
 
 .TechUserProjectConsoleSSOManager table{
-  margin-bottom: 30px;
+  margin-bottom: 5px;
 }
 
 tr:not(:last-child) {
