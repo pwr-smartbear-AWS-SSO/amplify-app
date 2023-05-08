@@ -37,7 +37,8 @@ function ProjectConsole({project}){
             <ConfigureSSO 
             projectId = {project.user_pool_id} 
             domainUrl = {project.domain_url}
-            project_name = {project.name}/>
+            project_name = {project.name}
+            clients={[project.client1_id, project.client2_id]}/>
         </div>
         </>
     )

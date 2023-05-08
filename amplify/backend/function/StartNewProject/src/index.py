@@ -6,16 +6,17 @@ def handler(event, context):
     project_name = event['pathParameters']['ProjectName']
     tech_user_email = event['pathParameters']['TechUserEmail']
 
-    amplify_pool_id = "eu-central-1_QOoTXKgsC"
+    amplify_pool_id = "eu-central-1_z2ZG2mAF7"
     
     new_user_pool_data = CreateUserPool(project_name)
     new_user_name = CreateUser(amplify_pool_id, tech_user_email)
     AddUserToGroup(amplify_pool_id, new_user_name, 'techuser')
     domain_prefix = CreateDomain(new_user_pool_data['id'], project_name)
-    client1_name = CreateClient(new_user_pool_data['id'], ((project_name.lower())+"-client1"), 'https://jwt.io/')
-    client2_name = CreateClient(new_user_pool_data['id'], ((project_name.lower())+"-client2"), 'https://jwt.io/')
-    AddItemToDB("tech_user_list", new_user_name, new_user_pool_data['id'], tech_user_email, project_name, domain_prefix, client1_name, client2_name)
+    client1_id = CreateClient(new_user_pool_data['id'], ((project_name.lower())+"-client1"), 'https://jwt.io/')
+    client2_id = CreateClient(new_user_pool_data['id'], ((project_name.lower())+"-client2"), 'https://jwt.io/')
+    AddItemToDB("tech_user_list", new_user_name, new_user_pool_data['id'], tech_user_email, project_name, domain_prefix, client1_id, client2_id)
     
+
     return {
       'statusCode': 200,
       'headers': {
@@ -23,7 +24,7 @@ def handler(event, context):
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
       },
-      'body': json.dumps('Success!')
+      'body': json.dumps('Hello from your new Amplify Python lambda!')
     }
 
 def CreateUserPool(user_pool_name):
@@ -36,15 +37,18 @@ def CreateUserPool(user_pool_name):
             "RequireUppercase": True
         }
     }
-    username_attributes = ["email"]
-    
     cognito_idp = boto3.client("cognito-idp")
     response = cognito_idp.create_user_pool(
         PoolName=user_pool_name,
         Policies=policies,
-        UsernameAttributes=username_attributes,
+        AdminCreateUserConfig={ 'AllowAdminCreateUserOnly': False },
+        AutoVerifiedAttributes=['email'],
+        UsernameAttributes=['email'],
+        #UsernameAttributes=["email"],
         MfaConfiguration='OFF'
     )
+    print("CreateUserPool response:")
+    print(response)
     return {"id": response["UserPool"]["Id"], "arn": response["UserPool"]["Arn"]}
 
 
@@ -68,6 +72,8 @@ def CreateUser(user_pool_id, user_mail):
             'EMAIL',
         ]
     )
+    print("CreateUser response:")
+    print(response)
     return response["User"]["Username"] #returns the user ID!
 
 def AddUserToGroup(user_pool_id, user_name, group_name):
@@ -78,7 +84,7 @@ def AddUserToGroup(user_pool_id, user_name, group_name):
         GroupName=group_name
     )
 
-def AddItemToDB(table_name, tech_user_id, user_pool_id, tech_user_email, project_name, domain_prefix, client1_name, client2_name):
+def AddItemToDB(table_name, tech_user_id, user_pool_id, tech_user_email, project_name, domain_prefix, client1_id, client2_id):
     client = boto3.client('dynamodb')
     
     response = client.put_item(
@@ -99,16 +105,18 @@ def AddItemToDB(table_name, tech_user_id, user_pool_id, tech_user_email, project
         "domain_url": {
             "S": str("https://"+domain_prefix+".auth.eu-central-1.amazoncognito.com")
         },
-        "client1_name": {
-            "S": str(client1_name)
+        "client1_id": {
+            "S": str(client1_id)
         },
-        "client2_name": {
-            "S": str(client2_name)
+        "client2_id": {
+            "S": str(client2_id)
         }
     })
+    print("CAddItemToDB response:")
+    print(response)
 
 def CreateDomain(user_pool_id, project_name):
-    domain_prefix = ((project_name.lower())+"-cxnajder-was-here")
+    domain_prefix = ((project_name.lower())+"-projectmanager-cxnajder-was-here")
     cognito = boto3.client('cognito-idp')
     response = cognito.create_user_pool_domain(
         Domain=domain_prefix,
@@ -139,4 +147,4 @@ def CreateClient(user_pool_id, client_name, callback_url):
     )
     print("CreateClient",client_name , "response:")
     print(response)
-    return client_name
+    return response['UserPoolClient']['ClientId']
