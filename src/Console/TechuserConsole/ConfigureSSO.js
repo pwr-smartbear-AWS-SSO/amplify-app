@@ -9,6 +9,7 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
     const [clinetIdNumber, setClientIdNumber] = useState(0);
 
 
+
     const [attributes, setAttributes] = useState([]);
     const [newAttribute, setNewAttribute] = useState("");
     const [newMapping, setNewMapping] = useState("");
@@ -16,11 +17,14 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
     const addAttribute = () => {
         if (newAttribute.trim() === "" || newMapping.trim() === "") return;
         
-            setAttributes((prev) => [...prev, { name: newAttribute, mapping: newMapping }]);
-            setNewAttribute("");
-            setNewMapping("");
-        };
-        
+        setAttributes((prev) => [    ...prev,     { id: prev.length, name: newAttribute, mapping: newMapping }  ]);
+        setNewAttribute("");
+        setNewMapping("");
+    };
+
+    const deleteAttribute = (id) => {
+        setAttributes((prev) => prev.filter((attr) => attr.id !== id));
+    };
         
     const handleMappingChange = (e) => {
         setNewMapping(e.target.value);
@@ -38,8 +42,12 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
     const handleAddClick = () => {
         setTableData([...tableData, inputValue]);
         setInputValue('');
-      };
+    };
 
+    const handleDeleteClick = (index) => {
+        setTableData((prevData) => prevData.filter((_, i) => i !== index));
+    };
+    
 
     const projectUri = "urn:amazon:cognito:sp:"+projectId;
 
@@ -158,7 +166,7 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
                             {tableData.map((value, index) => (
                             <tr key={index}>
                                 <td>{value}</td>
-                                <td className="td_with_delete_button"><button type="button">Delete</button></td>
+                                <td className="td_with_delete_button"><button type="button" onClick={() => handleDeleteClick(index)}>Delete</button></td>
                             </tr>
                             ))}
                         </tbody>
@@ -213,7 +221,7 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
                         <tr key={index}>
                             <td>{attr.name}</td>
                             <td>{attr.mapping}</td>
-                            <td className="td_with_delete_button"><button type="button">Delete</button></td>
+                            <td className="td_with_delete_button"><button type="button" onClick={() => deleteAttribute(attr.id)}>Delete</button></td>
                         </tr>
                     ))}
                     </tbody>
