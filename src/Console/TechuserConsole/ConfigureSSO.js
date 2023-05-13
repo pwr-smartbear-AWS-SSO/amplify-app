@@ -137,7 +137,7 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
                 checked={!displayFileOption}
                 onChange={toggleFileOption}
                 />
-                cnofigure with URL
+                configure with URL
             </label>
 
             <label className='sso_checkbox'>
