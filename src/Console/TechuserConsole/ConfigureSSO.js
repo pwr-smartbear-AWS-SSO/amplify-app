@@ -146,7 +146,7 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
                 checked={displayFileOption}
                 onChange={toggleFileOption}
                 />
-                cnofigure with XML file
+                configure with XML file
             </label>
 
             <br />
