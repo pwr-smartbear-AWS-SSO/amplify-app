@@ -19,7 +19,7 @@ def handler(event, context):
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
-        'body': json.dumps('UserPool name is taken')
+        'body': json.dumps('UserPool with given name already exists')
         }
     else:
         new_user_pool_data = CreateUserPool(cognito_idp, project_name)
