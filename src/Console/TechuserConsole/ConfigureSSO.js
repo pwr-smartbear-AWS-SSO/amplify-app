@@ -180,7 +180,7 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
                         onChange={(e) => setInputValue(e.target.value)}
                         />
                         <button type="button" onClick={handleAddClick}>Add</button>
-                        <p>Leave empyt to allow any @example.com</p>
+                        <p>Leave empty to allow any @example.com</p>
                     </div>
                 </div>
 
