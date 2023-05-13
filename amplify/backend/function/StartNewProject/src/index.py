@@ -6,7 +6,7 @@ def handler(event, context):
     project_name = event['pathParameters']['ProjectName']
     tech_user_email = event['pathParameters']['TechUserEmail']
 
-    amplify_pool_id = "eu-central-1_z2ZG2mAF7"
+    amplify_pool_id = "eu-central-1_QOoTXKgsC"
     
     new_user_pool_data = CreateUserPool(project_name)
     new_user_name = CreateUser(amplify_pool_id, tech_user_email)
