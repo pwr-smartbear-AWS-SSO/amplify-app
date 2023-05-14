@@ -144,6 +144,9 @@ def AddItemToDB(table_name, tech_user_id, user_pool_id, tech_user_email, project
         "tech_user_email": {
             "S": str(tech_user_email)
         },
+        "domain_prefix": {
+            "S": str(domain_prefix)
+        },
         "domain_url": {
             "S": str("https://"+domain_prefix+".auth.eu-central-1.amazoncognito.com")
         },
