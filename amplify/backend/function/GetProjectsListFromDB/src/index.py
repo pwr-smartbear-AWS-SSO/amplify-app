@@ -6,7 +6,7 @@ def handler(event, context):
     dynamodb = boto3.resource('dynamodb')
 
     # Get the table
-    table = dynamodb.Table('tech_user_list')
+    table = dynamodb.Table('projects_list')
 
     # Scan the table to get all the items
     response = table.scan()

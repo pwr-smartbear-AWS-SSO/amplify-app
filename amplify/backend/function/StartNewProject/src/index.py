@@ -46,7 +46,7 @@ def handler(event, context):
         domain_prefix = CreateDomain(cognito_idp, new_user_pool_data['id'], project_name)
         client1_id = CreateClient(cognito_idp, new_user_pool_data['id'], ((project_name.lower())+"-client1"), 'https://jwt.io/')
         client2_id = CreateClient(cognito_idp, new_user_pool_data['id'], ((project_name.lower())+"-client2"), 'https://jwt.io/')
-        AddItemToDB("tech_user_list", new_user_name, new_user_pool_data['id'], tech_user_email, project_name, domain_prefix, client1_id, client2_id)
+        AddItemToDB("projects_list", new_user_name, new_user_pool_data['id'], tech_user_email, project_name, domain_prefix, client1_id, client2_id)
     
         return {
         'statusCode': 200,
@@ -132,17 +132,17 @@ def AddItemToDB(table_name, tech_user_id, user_pool_id, tech_user_email, project
     response = client.put_item(
     TableName=table_name,
     Item = {
-        "tech_user_id": {
-            "S": str(tech_user_id)
-        },
         "user_pool_id": {
             "S": str(user_pool_id)
         },
-        "tech_user_email": {
-            "S": str(tech_user_email)
-        },
         "project_name": {
             "S": str(project_name)
+        },
+        "tech_user_id": {
+            "S": str(tech_user_id)
+        },
+        "tech_user_email": {
+            "S": str(tech_user_email)
         },
         "domain_url": {
             "S": str("https://"+domain_prefix+".auth.eu-central-1.amazoncognito.com")
