@@ -32,10 +32,10 @@ function DisplayProjects({ displayProjects_refresh_count,  refreshDisplayProject
     }, [displayProjects_refresh_count]);
 
 
-    const handleDeleteClick = async (event, user_pool_id) => {
+    const handleDeleteClick = async (user_pool_id, domain_prefix) => {
         try {
             const deleteProjectPath = '/DeleteProject/'+user_pool_id;
-            await API.del('OurApiAmplifyProject', deleteProjectPath, {});
+            await API.del('OurApiAmplifyProject', deleteProjectPath, {body: {domainPrefix: domain_prefix}});
             console.log('Project deleted succesfully.');
 
             setTimeout(() => {
@@ -74,7 +74,7 @@ function DisplayProjects({ displayProjects_refresh_count,  refreshDisplayProject
                             <tr key={key}>
                                 <td>{projectsData[key].project_name}</td> 
                                 <td>{projectsData[key].tech_user_email}</td>
-                                <td className="td_with_delete_button"><button type="button" onClick={() => handleDeleteClick(projectsData[key].user_pool_id)}>Delete</button></td>
+                                <td className="td_with_delete_button"><button type="button" onClick={() => handleDeleteClick(projectsData[key].user_pool_id, projectsData[key].domain_prefix)}>Delete</button></td>
                             </tr>
                         ))}
                     </table>
