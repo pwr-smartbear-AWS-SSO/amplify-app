@@ -20,11 +20,11 @@
       "function": {
         "StartNewProject": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
-          "s3Key": "amplify-builds/StartNewProject-643359323278515a4679-build.zip"
+          "s3Key": "amplify-builds/StartNewProject-3179636f6a6b42565571-build.zip"
         },
         "GetProjectsListFromDB": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
-          "s3Key": "amplify-builds/GetProjectsListFromDB-30347373554f49322b6c-build.zip"
+          "s3Key": "amplify-builds/GetProjectsListFromDB-58334d3943317579474b-build.zip"
         },
         "GetCognitoUsers": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
@@ -32,7 +32,7 @@
         },
         "ListMyProjects": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
-          "s3Key": "amplify-builds/ListMyProjects-31526f34576276766f2b-build.zip"
+          "s3Key": "amplify-builds/ListMyProjects-654b676a44704f676258-build.zip"
         },
         "GetUsersList": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
@@ -41,6 +41,10 @@
         "CreateIdentityProvider": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
           "s3Key": "amplify-builds/CreateIdentityProvider-59544637645431682f59-build.zip"
+        },
+        "DeleteProject": {
+          "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
+          "s3Key": "amplify-builds/DeleteProject-375455777351754c5748-build.zip"
         }
       },
       "api": {

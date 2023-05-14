@@ -49,6 +49,14 @@
           ],
           "category": "function",
           "resourceName": "GetUsersList"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "DeleteProject"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -85,6 +93,11 @@
   },
   "function": {
     "CreateIdentityProvider": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "DeleteProject": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -129,6 +142,22 @@
         {
           "category": "function",
           "resourceName": "CreateIdentityProvider"
+        }
+      ]
+    },
+    "AMPLIFY_function_DeleteProject_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "DeleteProject"
+        }
+      ]
+    },
+    "AMPLIFY_function_DeleteProject_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "DeleteProject"
         }
       ]
     },

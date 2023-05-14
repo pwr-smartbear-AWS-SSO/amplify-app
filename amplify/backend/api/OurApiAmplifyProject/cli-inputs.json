@@ -64,6 +64,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/DeleteProject/{UserPoolId}": {
+      "name": "/DeleteProject/{UserPoolId}",
+      "lambdaFunction": "DeleteProject",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }
