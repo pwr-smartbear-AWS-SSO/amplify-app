@@ -20,7 +20,7 @@
       "function": {
         "StartNewProject": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
-          "s3Key": "amplify-builds/StartNewProject-3179636f6a6b42565571-build.zip"
+          "s3Key": "amplify-builds/StartNewProject-39727932746f69546e54-build.zip"
         },
         "GetProjectsListFromDB": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
@@ -44,7 +44,7 @@
         },
         "DeleteProject": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
-          "s3Key": "amplify-builds/DeleteProject-375455777351754c5748-build.zip"
+          "s3Key": "amplify-builds/DeleteProject-51695379686779786539-build.zip"
         }
       },
       "api": {
