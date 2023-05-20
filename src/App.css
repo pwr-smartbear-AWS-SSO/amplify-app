@@ -196,23 +196,14 @@ tr:hover > td > button{display: inline-block;}
 }
 
 tr:not(:last-child) {
-    border-bottom: solid 1px rgb(0, 0, 0, 0.4);
+  border-bottom: solid 1px rgb(0, 0, 0, 0.4);
 }
-/*
-#upload_file_button{
-  color: white;
-  text-shadow: 1px 1px 1px black;
-  background-color: rgb(4, 120, 167);
-  padding: 2px;
-  box-shadow: 1px 1px 1px rgb(0, 0, 0, 0.9);
+
+.bottom_line{
+  border-bottom: 3px solid #0B9AC6;
   border-radius: 2px;
-  display: inline-block;
 }
-#upload_file_button:hover{
-  background-color: rgb(80, 140, 163);
+
+a {
+  margin-right: 10px;
 }
-#upload_file_button > input{
-  display: neno;
-}
-                        
-*/
