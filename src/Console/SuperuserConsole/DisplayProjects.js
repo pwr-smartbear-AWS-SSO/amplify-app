@@ -10,8 +10,9 @@ function DisplayProjects({ displayProjects_refresh_count,  refreshDisplayProject
         setIsVisible(!isVisible);
     };
 
+
     useEffect(() => {
-        const DispleyProjectsList = async () => {
+        const DisplayProjectsList = async () => {
             try {
                 const response = await API.get('OurApiAmplifyProject', '/GetProjectsListsFromDB');
                 
@@ -28,19 +29,24 @@ function DisplayProjects({ displayProjects_refresh_count,  refreshDisplayProject
             }
         };
         
-        DispleyProjectsList();
+        DisplayProjectsList();
     }, [displayProjects_refresh_count]);
 
 
-    const handleDeleteClick = async (user_pool_id, domain_prefix) => {
+    const delResponse = document.getElementById('Del_response');
+
+    const handleDeleteClick = async (user_pool_id, domain_prefix, project_name) => {
+        console.log(user_pool_id)
         try {
             const deleteProjectPath = '/DeleteProject/'+user_pool_id;
-            await API.del('OurApiAmplifyProject', deleteProjectPath, {body: {domainPrefix: domain_prefix}});
+            await API.del('myProjectManagerApi', deleteProjectPath, {body: {domainPrefix: domain_prefix}});
             console.log('Project deleted succesfully.');
+
+            delResponse.textContent = 'Project '+project_name+' deleted succesfully.';
 
             setTimeout(() => {
                 refreshDisplayProjects();
-            }, 1000);
+            }, 500);
 
         } catch (error) {
             console.error('Couldnt delete the project');
@@ -74,14 +80,16 @@ function DisplayProjects({ displayProjects_refresh_count,  refreshDisplayProject
                             <tr key={key}>
                                 <td>{projectsData[key].project_name}</td> 
                                 <td>{projectsData[key].tech_user_email}</td>
-                                <td className="td_with_delete_button"><button type="button" onClick={() => handleDeleteClick(projectsData[key].user_pool_id, projectsData[key].domain_prefix)}>Delete</button></td>
+                                <td className="td_with_delete_button"><button type="button" onClick={() => handleDeleteClick(projectsData[key].user_pool_id, projectsData[key].domain_prefix, projectsData[key].project_name)}>Delete</button></td>
                             </tr>
                         ))}
                     </table>
+                    <div id="Del_response"></div>
                 </div>
             </div>
         </div>
     )
 }
+
 
 export default DisplayProjects;
