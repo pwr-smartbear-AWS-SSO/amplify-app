@@ -19,12 +19,7 @@ def handler(event, context):
     tech_user_projects = []
     for item in items_arrey:
         if item['tech_user_id'] == tech_user_id:
-            tech_user_projects.append(json.dumps({
-              'name': item['project_name'], 
-              'user_pool_id': item['user_pool_id'], 
-              'domain_url': item['domain_url'], 
-              'client1_id': item['client1_id'], 
-              'client2_id': item['client2_id']}))
+            tech_user_projects.append(json.dumps(item))
     
     return {
   'statusCode': 200,

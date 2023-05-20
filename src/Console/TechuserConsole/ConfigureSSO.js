@@ -2,12 +2,10 @@ import React, {useState} from 'react';
 import { API } from 'aws-amplify';
 
 
-function ConfigureSSO({projectId, domainUrl, project_name, clients}){
+function ConfigureSSO({projectId, domainUrl, domainPrefix, project_name, clients}){
     const [displayFileOption, setDisplayFileOption] = useState(false);
     const [metadataFile, setMetadataFile] = useState();
     const [metadataURL, setMetadataURL] = useState('');
-    const [clinetIdNumber, setClientIdNumber] = useState(0);
-
 
 
     const [attributes, setAttributes] = useState([]);
@@ -51,7 +49,7 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
 
     const projectUri = "urn:amazon:cognito:sp:"+projectId;
 
-    const submitResoult = document.getElementById('subbmit_resoult');
+    const submitResoult = document.getElementById("subbmit_resoult_"+project_name);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -74,7 +72,7 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
                         metadata: formData,
                         attributesMap: attributeMap,
                         idpIdentifiers: tableData,
-                        clientId: clients[clinetIdNumber]
+                        clientIds: clients
                     }
                 });
 
@@ -87,7 +85,7 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
                         metadata: metadataURL,
                         attributesMap: attributeMap,
                         idpIdentifiers: tableData,
-                        clientId: clients[clinetIdNumber]
+                        clientIds: clients
                     }
                 });
 
@@ -106,22 +104,15 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
 
     const toggleFileOption = () => {
         setDisplayFileOption(!displayFileOption);
-      };
-      
-    const toggleClient = () => {
-        if (clinetIdNumber === 0){
-            setClientIdNumber(1);
-        }else{
-            setClientIdNumber(0);
-        }
     };
-
+      
+    
     return(
         <>
             <table>
                 <tr>
                     <th>Single sign on URL</th>
-                    <td>{domainUrl}</td>
+                    <td>{domainUrl+'/saml2/idpresponse'}</td>
                 </tr>
                 <tr>
                     <th>Audience URI</th>
@@ -254,29 +245,21 @@ function ConfigureSSO({projectId, domainUrl, project_name, clients}){
                     />
                     <button type="button" onClick={addAttribute}>Add Attribute</button>
                 </div>
-                
                 <br />
-                <label className='sso_checkbox'>
-                    <input
-                    type="checkbox"
-                    checked={!clinetIdNumber}
-                    onChange={toggleClient}
-                    />
-                    Client 1
-                </label>
-
-                <label className='sso_checkbox'>
-                    <input
-                    type="checkbox"
-                    checked={clinetIdNumber}
-                    onChange={toggleClient}
-                    />
-                    Client 2
-                </label>
-
                 <button type="submit">Submit SSO</button>
             </form>
-            <div id = "subbmit_resoult"></div>
+            <div id = {"subbmit_resoult_"+project_name}></div>
+            <br />
+            <div className='client_buttons'>
+                <div className="console_element_header"><h3>Client links:</h3></div>
+            
+                <a href={"https://"+domainPrefix+".auth.eu-central-1.amazoncognito.com/oauth2/authorize?client_id="+clients[0]+"&response_type=code&scope=email+openid+profile&redirect_uri=https%3A%2F%2Fjwt.io%2F"} target="_blank">
+                    <button type="button">Client1 - code</button>
+                </a>
+                <a href={"https://"+domainPrefix+".auth.eu-central-1.amazoncognito.com/oauth2/authorize?client_id="+clients[1]+"&response_type=token&scope=email+openid+profile&redirect_uri=https%3A%2F%2Fjwt.io%2F"} target="_blank">
+                    <button type="button">Client2 - implicit</button>
+                </a>
+            </div>
         </>
     )
 }

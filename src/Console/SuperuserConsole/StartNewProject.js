@@ -16,10 +16,12 @@ function StartNewProject({ refreshDisplayProjects }) {
       submitResoult.textContent = response;
       setTimeout(() => {
         refreshDisplayProjects();
-      }, 1000);
+      }, 500);
+      
     } catch (error) {
       console.error('Creting new project failed!');
       console.error(error);
+      console.log(error);
       submitResoult.textContent = 'Something went wrong!';
     }
     

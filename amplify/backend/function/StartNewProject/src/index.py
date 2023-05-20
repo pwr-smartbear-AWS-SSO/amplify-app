@@ -44,8 +44,8 @@ def handler(event, context):
 
         AddUserToGroup(cognito_idp, amplify_pool_id, new_user_name, 'techuser')
         domain_prefix = CreateDomain(cognito_idp, new_user_pool_data['id'], project_name)
-        client1_id = CreateClient(cognito_idp, new_user_pool_data['id'], ((project_name.lower())+"-client1"), 'https://jwt.io/')
-        client2_id = CreateClient(cognito_idp, new_user_pool_data['id'], ((project_name.lower())+"-client2"), 'https://jwt.io/')
+        client1_id = CreateClient(cognito_idp, new_user_pool_data['id'], ((project_name.lower())+"-client1"), 'https://jwt.io/', 1)
+        client2_id = CreateClient(cognito_idp, new_user_pool_data['id'], ((project_name.lower())+"-client2"), 'https://jwt.io/', 0)
         AddItemToDB("projects_list", new_user_name, new_user_pool_data['id'], tech_user_email, project_name, domain_prefix, client1_id, client2_id)
     
         return {
@@ -171,7 +171,11 @@ def CreateDomain(cognito_idp, user_pool_id, project_name):
     return domain_prefix
 
 
-def CreateClient(cognito_idp, user_pool_id, client_name, callback_url):
+def CreateClient(cognito_idp, user_pool_id, client_name, callback_url, oauth_flow_code):
+    if oauth_flow_code:
+        allow_oauth_flow = 'code'
+    else:
+        allow_oauth_flow = 'implicit'
     response = cognito_idp.create_user_pool_client(
         UserPoolId=user_pool_id,
         ClientName=client_name,
@@ -180,13 +184,14 @@ def CreateClient(cognito_idp, user_pool_id, client_name, callback_url):
             callback_url,
         ],
         AllowedOAuthFlows=[
-            'code',
+            allow_oauth_flow,
         ],
         AllowedOAuthScopes=[
             'openid',
             'email',
             'profile',
-        ]
+        ],
+        AllowedOAuthFlowsUserPoolClient=True
     )
     print("CreateClient",client_name , "response:")
     print(response)

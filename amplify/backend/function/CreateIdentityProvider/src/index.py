@@ -23,7 +23,8 @@ def handler(event, context):
     
     idp_identifiers = request_body['idpIdentifiers']
 
-    client_id = request_body['clientId']
+    #client_id = request_body['clientId']
+    clients_ids = request_body['clientIds']
     
     
     client = boto3.client('cognito-idp')
@@ -39,7 +40,11 @@ def handler(event, context):
         #update existing
         UpdateIdp(client, user_pool_id, provider_name, metadata_json, attr_map_json, idp_identifiers)
 
-    UpdateClient(client, client_id, user_pool_id, provider_name, 'https://jwt.io/')
+    clinet1_response = UpdateClient(client, clients_ids[0], user_pool_id, provider_name, 'https://jwt.io/', 1)
+    clinet2_response = UpdateClient(client, clients_ids[1], user_pool_id, provider_name, 'https://jwt.io/', 0)
+    
+    print("Update Client 1 Response", clinet1_response)
+    print("Update Client 2 Response", clinet2_response)
 
     return {
         'statusCode': 200,
@@ -49,7 +54,9 @@ def handler(event, context):
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
         'body': json.dumps({
-            'event': event
+        #    'client1Response': str(clinet1_response),
+        #    'client2Response': str(clinet2_response)
+            'test': 'TEST'
         })
     }
 
@@ -77,7 +84,11 @@ def UpdateIdp(client, user_pool_id, provider_name, metadata_json, attr_map_json,
     print('UpdateIdP response:')
     print(update_response)  
 
-def UpdateClient(client, client_id, user_pool_id, idprovider_name, callback_url):
+def UpdateClient(client, client_id, user_pool_id, idprovider_name, callback_url, oauth_flow_code):
+    if oauth_flow_code:
+        allow_oauth_flow = 'code'
+    else:
+        allow_oauth_flow = 'implicit'
     response = client.update_user_pool_client(
         UserPoolId=user_pool_id,
         ClientId=client_id,
@@ -88,11 +99,13 @@ def UpdateClient(client, client_id, user_pool_id, idprovider_name, callback_url)
             callback_url,
         ],
         AllowedOAuthFlows=[
-            'code',
+            allow_oauth_flow,
         ],
         AllowedOAuthScopes=[
             'openid',
             'email',
             'profile',
-        ]
+        ],
+        AllowedOAuthFlowsUserPoolClient=True
     )
+    return response
