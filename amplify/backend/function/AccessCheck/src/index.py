@@ -1,10 +1,10 @@
 def lambda_handler(event, context):
     
-    if event['authorizationToken'] == '1234':
+    if event['authorizationToken'] == '1111':
         auth_status = 'Allow'
     else:
         auth_status = 'Deny'
-    
+
     authResponse = {
         'policyDocument': { 
             'Version': '2012-10-17',
