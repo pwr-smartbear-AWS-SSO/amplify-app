@@ -134,6 +134,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_AccessControl_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AccessControl"
+        }
+      ]
+    },
+    "AMPLIFY_function_AccessControl_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AccessControl"
+        }
+      ]
+    },
     "AMPLIFY_function_CreateIdentityProvider_deploymentBucketName": {
       "usedBy": [
         {
