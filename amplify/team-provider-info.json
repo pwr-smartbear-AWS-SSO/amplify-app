@@ -45,10 +45,6 @@
         "DeleteProject": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
           "s3Key": "amplify-builds/DeleteProject-51695379686779786539-build.zip"
-        },
-        "AccessCheck": {
-          "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
-          "s3Key": "amplify-builds/AccessCheck-5858494b55724f424d70-build.zip"
         }
       },
       "api": {

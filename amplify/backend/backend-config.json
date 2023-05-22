@@ -92,11 +92,6 @@
     }
   },
   "function": {
-    "AccessCheck": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "CreateIdentityProvider": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -134,22 +129,6 @@
     }
   },
   "parameters": {
-    "AMPLIFY_function_AccessCheck_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "AccessCheck"
-        }
-      ]
-    },
-    "AMPLIFY_function_AccessCheck_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "AccessCheck"
-        }
-      ]
-    },
     "AMPLIFY_function_CreateIdentityProvider_deploymentBucketName": {
       "usedBy": [
         {
