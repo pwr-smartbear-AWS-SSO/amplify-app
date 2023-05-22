@@ -92,6 +92,11 @@
     }
   },
   "function": {
+    "AccessControl": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "CreateIdentityProvider": {
       "build": true,
       "providerPlugin": "awscloudformation",
