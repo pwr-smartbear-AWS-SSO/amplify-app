@@ -1,4 +1,4 @@
-def lambda_handler(event, context):
+def handler(event, context):
     if event['authorizationToken'] == '1234':
         auth_status = 'Allow'
     else:
