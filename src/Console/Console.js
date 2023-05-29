@@ -15,7 +15,7 @@ function Console() {
       fetchGroups();
     }, []);
   
-    const isAdmin = groups.includes("techuser");
+    const isAdmin = groups.includes("Customer_Admin_Group");
     const isTechuser = groups.includes("techuser");
 
     return (
