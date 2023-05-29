@@ -2,7 +2,7 @@ import boto3
 from botocore.exceptions import ClientError
 
 
-def lambda_handler(event, context):
+def handler(event, context):
 
     token = event['authorizationToken']
     if validate_token(token):
