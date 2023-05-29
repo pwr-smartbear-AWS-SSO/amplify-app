@@ -122,6 +122,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "JSAccessLambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "ListMyProjects": {
       "build": true,
       "providerPlugin": "awscloudformation",

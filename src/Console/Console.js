@@ -15,20 +15,21 @@ function Console() {
       fetchGroups();
     }, []);
   
-    const isAdmin = groups.includes("Customer_Admin_Group");
+    const isAdmin = groups.includes("techuser");
     const isTechuser = groups.includes("techuser");
 
     return (
         <div id="Console">
           {isAdmin ? (
             <SuperuserConsole />
+
           ) : (<></>)}
           {isTechuser ? (
             <>
             <TechuserConsole />
             </>
           ) : (<></>)}
-          
+
         </div>
       );
 

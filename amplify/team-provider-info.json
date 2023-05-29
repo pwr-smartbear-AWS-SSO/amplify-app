@@ -48,8 +48,9 @@
         },
         "AccessControl": {
           "deploymentBucketName": "amplify-amplify9d17f83b49964-staging-71335-deployment",
-          "s3Key": "amplify-builds/AccessControl-7a6d6c776d304c415251-build.zip"
-        }
+          "s3Key": "amplify-builds/AccessControl-735869742b32476b5464-build.zip"
+        },
+        "JSAccessLambda": {}
       },
       "api": {
         "OurApiAmplifyProject": {}
