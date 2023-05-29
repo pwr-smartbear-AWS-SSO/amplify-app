@@ -1,36 +1,45 @@
 import boto3
+from botocore.exceptions import ClientError
 
 
-def handler(event, context):
-    authorization_token = event['authorizationToken']
-    cognito_client = boto3.client('cognito-idp', region_name='eu-central-1')
+def lambda_handler(event, context):
 
+    token = event['authorizationToken']
+    if validate_token(token):
+        return generate_policy('user', 'Allow', event['methodArn'])
+    else:
+        return generate_policy('user', 'Deny', event['methodArn'])
+
+
+def validate_token(token):
     try:
-        response = cognito_client.get_user(
-            AccessToken=authorization_token
-        )
-        user_id = response['Username']
+        client = boto3.client('cognito-idp', region_name='eu-central-1')
 
-        if user_id in ['eu-central-1_QOoTXKgsC']:
-            auth_status = 'Allow'
+        response = client.get_user(AccessToken=token)
+
+        if response['UserPoolId'] == 'eu-central-1_QOoTXKgsC':
+            return True
         else:
-            auth_status = 'Deny'
-    except Exception as e:
+            return False
+    except ClientError as e:
         print(e)
-        auth_status = 'Deny'
+        return False
 
-    auth_response = {
-        'principalId': user_id,
+
+def generate_policy(principal_id, effect, resource):
+    policy = {
+        'principalId': principal_id,
         'policyDocument': {
             'Version': '2012-10-17',
             'Statement': [
                 {
                     'Action': 'execute-api:Invoke',
-                    'Resource': [event['methodArn']],
-                    'Effect': auth_status
+                    'Effect': effect,
+                    'Resource': resource
                 }
             ]
         }
     }
 
-    return auth_response
+    return policy
+
