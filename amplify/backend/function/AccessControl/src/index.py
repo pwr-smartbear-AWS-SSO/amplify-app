@@ -1,6 +1,6 @@
 import boto3
 
-def lambda_handler(event, context):
+def handler(event, context):
 
     token = event['authorizationToken']
 
