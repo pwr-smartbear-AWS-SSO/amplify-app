@@ -24,7 +24,7 @@ def validate_cognito_token(token, user_pool_id, region):
     except jwt.InvalidSignatureError:
         return False
 
-def lambda_handler(event, context):
+def handler(event, context):
     token = event["authorizationToken"]
     user_pool_id = "eu-central-1_QOoTXKgsC"
     region = "eu-central-1"

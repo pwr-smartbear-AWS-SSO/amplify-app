@@ -69,7 +69,13 @@
       "name": "/DeleteProject/{UserPoolId}",
       "lambdaFunction": "DeleteProject",
       "permissions": {
-        "setting": "open"
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
       }
     }
   }
