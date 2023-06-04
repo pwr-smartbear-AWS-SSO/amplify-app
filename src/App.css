@@ -8,7 +8,7 @@
 }
 
 body{
-  background-color: rgb(63, 63, 63);
+  background-color: rgb(64, 64, 64);
 }
 
 
@@ -39,7 +39,7 @@ main{
 }
 
 h2{
-  background-color: #0B9AC6;
+  background-color: #0C9BC7;
   color: white;
 }
 
@@ -116,7 +116,7 @@ table{
   border-radius: 2px;
   margin: 0;
   padding: 0;
-  box-shadow: 1px 1px 1px rgb(0, 0, 0, 0.9);
+  box-shadow: 1px 1px 1px rgb(1, 1, 1, 0.9);
   border-collapse: collapse;
   width: 100%;
 }
@@ -147,7 +147,7 @@ td,th{
   padding: 2px;
 }
 
-tr:hover > td{background-color: rgb(172, 172, 172);}
+tr:hover > td{background-color: rgb(173, 173, 173);}
 tr:hover > td > button{display: inline-block;}
 
 .visible {
@@ -166,10 +166,10 @@ tr:hover > td > button{display: inline-block;}
   margin-right: 10px;
   color: white;
   text-shadow: 1px 1px 1px black;
-  background-color: #0B9AC6;
+  background-color: #0C9BC7;
   padding: 5px;
   padding-left: 0px;
-  box-shadow: 1px 1px 1px rgb(0, 0, 0, 0.9);
+  box-shadow: 1px 1px 1px rgb(1, 1, 1, 0.9);
   border-radius: 2px;
 }
 
