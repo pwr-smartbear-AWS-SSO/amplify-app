@@ -93,7 +93,7 @@ function ConfigureSSO({projectId, domainUrl, domainPrefix, project_name, clients
 
             }
             console.log('Lambda function executed successfully.');
-            submitResoult.textContent = 'SSO configured succefully';
+            submitResoult.textContent = 'SSO configured successfully';
           
         } catch (error) {
             console.error('SSO configuration failed!');
