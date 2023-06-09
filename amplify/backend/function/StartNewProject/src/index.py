@@ -55,7 +55,7 @@ def handler(event, context):
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
-        'body': json.dumps('New Project created succesfully')
+        'body': json.dumps('New Project created successfully')
         }
     
 
