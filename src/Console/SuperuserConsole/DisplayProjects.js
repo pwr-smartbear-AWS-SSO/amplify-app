@@ -40,9 +40,9 @@ function DisplayProjects({ displayProjects_refresh_count,  refreshDisplayProject
         try {
             const deleteProjectPath = '/DeleteProject/'+user_pool_id;
             await API.del('OurApiAmplifyProject', deleteProjectPath, {body: {domainPrefix: domain_prefix}});
-            console.log('Project deleted succesfully.');
+            console.log('Project deleted successfully.');
 
-            delResponse.textContent = 'Project '+project_name+' deleted succesfully.';
+            delResponse.textContent = 'Project '+project_name+' deleted successfully.';
 
             setTimeout(() => {
                 refreshDisplayProjects();
