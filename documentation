@@ -88,4 +88,29 @@ Rysunek 12 Przykładowy ekran końcowy od strony Techusera
 
 Rozdział 5. Badania i wnioski
 
-Sekcja zostanie wypełniona podczas fazy testowania programu
+Celem niniejszego rozdziału jest przedstawienie przeprowadzonych badań dotyczących aplikacji do integracji uwierzytelniania SSO oraz wyciągnięcie wniosków na podstawie zebranych danych i obserwacji. Badania miały na celu ocenę poprawności działania i użyteczności aplikacji, identyfikację ewentualnych problemów oraz dostarczenie informacji, które mogą przyczynić się do dalszego rozwoju i udoskonalenia rozwiązania.
+W ramach badań zastosowaliśmy różnorodne metody i techniki w celu oceny poprawności działania aplikacji do integracji uwierzytelniania SSO. Przede wszystkim, przeprowadziliśmy testy funkcjonalne, które obejmowały tworzenie nowej integracji, konfigurację z konta technicznego oraz weryfikację tokenu za pomocą strony Okta i JSON Web Token (JWT). Dzięki temu mogliśmy sprawdzić, czy proces uwierzytelniania przebiegał poprawnie i czy aplikacja skutecznie integrowała się z platformą SSO.
+
+Na podstawie przeprowadzonych badań można wysunąć następujące wnioski:
+
+Badania potwierdziły, że aplikacja do integracji uwierzytelniania SSO działała poprawnie i zgodnie z oczekiwaniami. Testy funkcjonalne, które obejmowały tworzenie integracji, konfigurację oraz weryfikację tokenu, wykazały, że procesy te były przeprowadzane prawidłowo i aplikacja skutecznie obsługiwała proces uwierzytelniania. Zarówno integracja z platformą SSO, jak i weryfikacja tokenu za pomocą strony Okta i JSON Web Token (JWT) przebiegały bez problemów.
+
+Badania wykazały, że aplikacja była użytkowa i łatwa w obsłudze. Proces tworzenia integracji oraz konfiguracji był intuicyjny, a weryfikacja tokenu za pomocą strony Okta i JSON Web Token (JWT) nie sprawiała trudności. Użytkownicy byli w stanie skutecznie korzystać z aplikacji i osiągać zamierzone rezultaty, co potwierdzało jej użyteczność.
+
+Przeprowadzone badania potwierdziły, że aplikacja do integracji uwierzytelniania SSO działała poprawnie i jest użytkowa. Procesy tworzenia integracji, konfiguracji oraz weryfikacji tokenu zostały przetestowane i spełniły oczekiwania. Wnioski z badań dostarczają informacji, które mogą przyczynić się do dalszego rozwoju i udoskonalenia aplikacji. Sugerujemy skoncentrowanie się na dalszym doskonaleniu wydajności oraz rozszerzeniu funkcjonalności. Pełne nagranie testu jest dostępne na platformie YouTube pod poniższym linkiem: https://www.youtube.com/watch?v=78TIBGkX19M
+
+
+Podsumowanie
+
+Podczas rozwoju projektu, zespół aktywnie poszukiwał wiedzy i skutecznie ją wykorzystywał, rozwiązując nie tylko techniczne problemy związane z implementacją kodu, ale także organizacyjne związane z pracą w grupie. Członkowie grupy uczestniczyli w zajęciach projektowych, spotkaniach z firmą i między sobą, dążąc do wspólnego celu i efektywnej współpracy. Wysiłki zaowocowały działającą aplikacją webową służącą do konfiguracji integracji SSO. Podczas rozwoju projektu, wykorzystano umiejętności z zakresu programowania oraz tworzenia dokumentacji projektowej. Grupa musiała stawić czoła różnym programistycznym wyzwaniom (eliminacja błędów w kodzie) i poznania nowych narzędzi (inwentarz firmy Amazon), ale dzięki współpracy między członkami zespołu back-endu i front-endu, te trudności zostały pokonane. Pomoc techniczna oraz merytoryczna od firmy "Smartbear” przyczyniły się do sukcesu projektu. Praca zespołu była wystarczająco dobrze przeprowadzona, aby osiągnąć wcześniej założone cele projektowe. Dzięki współpracy i zdobywaniu nowej wiedzy, członkowie grupy rozwinęli swoje umiejętności w pracy grupowej i realizacji projektów o szerokim zakresie.
+Bibliografia 
+
+1. GitHub zespołu: https://github.com/pwr-smartbear-AWS-SSO/amplify-app
+2. Dokumentacja Cognito: https://aws.amazon.com/cognito/details/
+3. https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
+4. Dokumentacja Amplify https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/amplify.html
+5. Dokumentacja API Gateway https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/apigateway.html
+6. Dokumentacja Cloudfront https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudfront.html
+7. Dokumentacja DynamoDB https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html
+8. Strona opisująca funkcję uwierzytelniania w AWS Amplify https://aws.amazon.com/amplify/authentication/?nc=sn&loc=3&dn=1
+9. Strona opisująca funkcje w AWS Amplify https://aws.amazon.com/amplify/features/?nc=sn&loc=3&dn=5
